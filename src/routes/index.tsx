@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   const heroPhotos = slideshowPhotos();
   const preview = [latest("hackathon"), latest("competition"), latest("project")].filter(
-    Boolean
+    (e): e is NonNullable<typeof e> => Boolean(e)
   );
   const standouts = entries.slice(0, 6).map((e) => e.images[0]!);
 

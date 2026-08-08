@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CategoryIndex } from "@/components/CategoryIndex";
 
-export const Route = createFileRoute("/hackathons")({
+export const Route = createFileRoute("/hackathons/")({
   head: () => ({
     meta: [
       { title: "Hackathons — ALU Robotics Club" },
