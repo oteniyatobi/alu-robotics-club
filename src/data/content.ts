@@ -43,9 +43,11 @@ export type Entry = {
 const POOL = [p1, p2, p3, p4, p5, p6];
 
 /** Builds 12 clearly labeled placeholder slots for an entry. */
+let seedCounter = 0;
 function placeholders(label: string, count = 12): EntryImage[] {
+  const seed = seedCounter++;
   return Array.from({ length: count }, (_, i) => ({
-    src: POOL[i % POOL.length] as string,
+    src: POOL[(i + seed) % POOL.length] as string,
     caption: `PLACEHOLDER ${String(i + 1).padStart(2, "0")} — ${label}`,
   }));
 }
