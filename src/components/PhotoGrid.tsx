@@ -25,6 +25,8 @@ export function PhotoGrid({
     return () => window.removeEventListener("keydown", onKey);
   }, [active, images.length]);
 
+  const current = active === null ? null : images[active];
+
   return (
     <>
       <div className={`grid gap-3 ${columns}`}>
@@ -49,7 +51,7 @@ export function PhotoGrid({
         ))}
       </div>
 
-      {active !== null && (
+      {active !== null && current && (
         <div
           role="dialog"
           aria-modal="true"
@@ -59,7 +61,7 @@ export function PhotoGrid({
         >
           <div className="flex items-center justify-between gap-4">
             <p className="min-w-0 truncate font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              {images[active].caption} · {active + 1}/{images.length}
+              {current?.caption} · {active + 1}/{images.length}
             </p>
             <button
               type="button"
@@ -85,8 +87,8 @@ export function PhotoGrid({
               <ChevronLeft className="h-6 w-6" />
             </button>
             <img
-              src={images[active].src}
-              alt={images[active].caption}
+              src={current?.src}
+              alt={current?.caption ?? ""}
               className="mx-auto max-h-full min-h-0 flex-1 object-contain"
             />
             <button

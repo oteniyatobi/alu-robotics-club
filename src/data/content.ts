@@ -45,7 +45,7 @@ const POOL = [p1, p2, p3, p4, p5, p6];
 /** Builds 12 clearly labeled placeholder slots for an entry. */
 function placeholders(label: string, count = 12): EntryImage[] {
   return Array.from({ length: count }, (_, i) => ({
-    src: POOL[i % POOL.length],
+    src: POOL[i % POOL.length] as string,
     caption: `PLACEHOLDER ${String(i + 1).padStart(2, "0")} — ${label}`,
   }));
 }
