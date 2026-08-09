@@ -35,7 +35,7 @@ export function Navbar() {
             width={36}
             height={36}
           />
-          <span className="min-w-0 truncate font-mono text-sm font-bold tracking-tight sm:text-base">
+          <span className="min-w-0 truncate text-sm font-bold tracking-tight sm:text-base">
             ALU ROBOTICS<span className="text-primary">.</span>
           </span>
         </Link>

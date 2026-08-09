@@ -38,7 +38,8 @@
   --color-navy-deep: var(--navy-deep);
   --color-steel: var(--steel);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -86,17 +87,9 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-mono);
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
   }
-}
-
-/* Circuit-board grid texture used behind content blocks */
-@utility circuit-grid {
-  background-image:
-    linear-gradient(to right, oklch(0.62 0.02 250 / 9%) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.62 0.02 250 / 9%) 1px, transparent 1px);
-  background-size: 48px 48px;
 }
 
 @utility label-mono {

@@ -51,7 +51,6 @@ export function SlideshowSection({
             : "bg-navy-deep/90"
         }`}
       />
-      <div aria-hidden="true" className="circuit-grid absolute inset-0 -z-10 opacity-60" />
       {children}
     </section>
   );
