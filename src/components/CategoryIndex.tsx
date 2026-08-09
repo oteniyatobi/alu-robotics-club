@@ -1,5 +1,5 @@
 import { SlideshowSection } from "@/components/SlideshowSection";
-import { EntryCard } from "@/components/EntryCard";
+import { EntryRow, layoutCycle } from "@/components/EntryRow";
 import { byCategory, slideshowPhotos, type Category } from "@/data/content";
 
 export function CategoryIndex({
@@ -15,29 +15,53 @@ export function CategoryIndex({
 
   return (
     <>
-      <SlideshowSection
-        photos={slideshowPhotos(category)}
-        overlay="hero"
-        className="px-4 py-24 sm:px-6 sm:py-28"
-      >
+      {/* Short, text-only header band */}
+      <section className="border-b border-border bg-background px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="label-mono">{items.length} entries on file</p>
-          <h1 className="mt-3 text-4xl font-bold sm:text-6xl">{heading}</h1>
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold sm:text-6xl">{heading}</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{blurb}</p>
         </div>
-      </SlideshowSection>
+      </section>
 
-      <SlideshowSection
-        photos={slideshowPhotos(category)}
-        interval={7000}
-        className="px-4 py-16 sm:px-6"
-      >
-        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((entry) => (
-            <EntryCard key={entry.slug} entry={entry} />
-          ))}
-        </div>
-      </SlideshowSection>
+      {items.map((entry, i) => {
+        const layout = layoutCycle[i % layoutCycle.length]!;
+
+        if (layout === "overlay") {
+          return (
+            <section key={entry.slug} className="bg-background px-0 py-0 sm:px-6 sm:py-10">
+              <div className="mx-auto max-w-7xl">
+                <EntryRow entry={entry} layout={layout} />
+              </div>
+            </section>
+          );
+        }
+
+        const tinted = i % 2 === 0;
+        const inner = (
+          <div className="mx-auto max-w-6xl">
+            <EntryRow entry={entry} layout={layout} />
+          </div>
+        );
+
+        return tinted ? (
+          <SlideshowSection
+            key={entry.slug}
+            photos={slideshowPhotos(category)}
+            interval={9000}
+            className="px-4 py-20 sm:px-6 sm:py-28"
+          >
+            {inner}
+          </SlideshowSection>
+        ) : (
+          <section
+            key={entry.slug}
+            className="border-y border-border bg-background px-4 py-12 sm:px-6 sm:py-16"
+          >
+            {inner}
+          </section>
+        );
+      })}
     </>
   );
 }

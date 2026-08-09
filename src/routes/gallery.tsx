@@ -68,10 +68,7 @@ function Gallery() {
         </div>
 
         <div className="mt-8">
-          <PhotoGrid
-            images={images}
-            columns="grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
-          />
+          <PhotoGrid images={images} layout="masonry" />
         </div>
       </div>
     </SlideshowSection>

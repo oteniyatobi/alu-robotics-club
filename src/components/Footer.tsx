@@ -4,7 +4,7 @@ import { CLUB } from "@/data/content";
 
 export function Footer() {
   return (
-    <footer className="circuit-grid border-t border-border bg-navy-deep">
+    <footer className="border-t border-border bg-navy-deep">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="flex min-w-0 items-start gap-4">
           <img
@@ -16,7 +16,7 @@ export function Footer() {
             loading="lazy"
           />
           <div className="min-w-0">
-            <p className="font-mono text-sm font-bold">{CLUB.name}</p>
+            <p className="font-display text-sm font-bold">{CLUB.name}</p>
             <p className="mt-2 max-w-sm text-sm text-muted-foreground">{CLUB.tagline}</p>
           </div>
         </div>

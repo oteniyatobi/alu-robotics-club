@@ -28,14 +28,14 @@ export function EntryDetail({ entry }: { entry: Entry }) {
             {entry.dateLabel} · {entry.location}
           </p>
           <h1 className="mt-3 text-4xl font-bold sm:text-6xl">{entry.title}</h1>
-          <p className="mt-5 inline-block bg-primary px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-primary-foreground">
+          <p className="mt-5 inline-block rounded-full bg-primary px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-primary-foreground">
             {entry.outcome}
           </p>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{entry.shortDescription}</p>
         </div>
       </SlideshowSection>
 
-      <section className="border-y border-border bg-background px-4 py-16 sm:px-6">
+      <section className="border-y border-border bg-background px-4 py-12 sm:px-6 sm:py-14">
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-[2fr_1fr]">
           <div className="space-y-5">
             <h2 className="rule-red text-xl font-bold">Write-up</h2>
@@ -74,13 +74,13 @@ export function EntryDetail({ entry }: { entry: Entry }) {
         </div>
       </section>
 
-      <SlideshowSection photos={photos} className="px-4 py-16 sm:px-6">
+      <SlideshowSection photos={photos} className="px-4 py-20 sm:px-6 sm:py-28">
         <div className="mx-auto max-w-6xl">
           <h2 className="rule-red text-xl font-bold">Photo set</h2>
           <p className="mb-6 text-sm text-muted-foreground">
             {entry.images.length} slots — click any frame for full size.
           </p>
-          <PhotoGrid images={entry.images} />
+          <PhotoGrid images={entry.images} layout="masonry" />
         </div>
       </SlideshowSection>
     </>
