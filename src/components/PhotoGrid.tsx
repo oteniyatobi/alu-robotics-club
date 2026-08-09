@@ -5,11 +5,28 @@ import type { EntryImage } from "@/data/content";
 type Props = {
   images: EntryImage[];
   columns?: string;
+  /** "grid" = even tiles, "masonry" = varied tile heights/widths */
+  layout?: "grid" | "masonry";
 };
+
+/** Rotating tile shapes so masonry reads as landscape / portrait / feature. */
+const shapes = [
+  "aspect-[4/3]",
+  "aspect-[3/4]",
+  "aspect-square",
+  "aspect-[3/4]",
+  "aspect-[16/10]",
+  "aspect-[4/5]",
+  "aspect-square",
+  "aspect-[5/4]",
+];
+
+const rounding = ["rounded-none", "rounded-2xl", "rounded-none", "rounded-xl"];
 
 export function PhotoGrid({
   images,
   columns = "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
+  layout = "grid",
 }: Props) {
   const [active, setActive] = useState<number | null>(null);
 
@@ -27,31 +44,42 @@ export function PhotoGrid({
 
   const current = active === null ? null : images[active];
 
+  const tile = (image: EntryImage, i: number) => (
+    <button
+      key={image.caption + i}
+      type="button"
+      onClick={() => setActive(i)}
+      className={`group relative w-full overflow-hidden border border-border bg-card text-left ${
+        layout === "masonry"
+          ? `mb-3 block break-inside-avoid ${rounding[i % rounding.length]}`
+          : "rounded-none"
+      }`}
+    >
+      <img
+        src={image.src}
+        alt={image.caption}
+        loading="lazy"
+        className={`w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100 ${
+          layout === "masonry" ? shapes[i % shapes.length] : "aspect-[4/3]"
+        }`}
+      />
+      <span className="absolute inset-x-0 bottom-0 bg-navy-deep/85 px-2 py-1.5 font-mono text-[10px] uppercase leading-tight tracking-wider text-muted-foreground">
+        {image.caption}
+      </span>
+    </button>
+  );
+
   return (
     <>
-      <div className={`grid gap-3 ${columns}`}>
-        {images.map((image, i) => (
-          <button
-            key={image.caption + i}
-            type="button"
-            onClick={() => setActive(i)}
-            className="group relative aspect-[4/3] overflow-hidden border border-border bg-card text-left"
-          >
-            <img
-              src={image.src}
-              alt={image.caption}
-              loading="lazy"
-              className="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
-            />
-            <span className="absolute inset-x-0 bottom-0 bg-navy-deep/85 px-2 py-1.5 font-mono text-[10px] uppercase leading-tight tracking-wider text-muted-foreground">
-              {image.caption}
-            </span>
-            <span className="pointer-events-none absolute inset-0 border-2 border-primary opacity-0 transition-opacity group-hover:opacity-100" />
-          </button>
-        ))}
-      </div>
+      {layout === "masonry" ? (
+        <div className="columns-2 gap-3 sm:columns-3 lg:columns-4 [&>*]:mb-3">
+          {images.map(tile)}
+        </div>
+      ) : (
+        <div className={`grid gap-3 ${columns}`}>{images.map(tile)}</div>
+      )}
 
-      {active !== null && current && (
+      {current && active !== null && (
         <div
           role="dialog"
           aria-modal="true"
