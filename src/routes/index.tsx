@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SlideshowSection } from "@/components/SlideshowSection";
-import { EntryCard } from "@/components/EntryCard";
+import { EntryRow, layoutCycle } from "@/components/EntryRow";
 import { CLUB, latest, slideshowPhotos, entries } from "@/data/content";
 
 export const Route = createFileRoute("/")({
@@ -56,7 +56,7 @@ function Home() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 bg-primary px-5 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground transition-opacity hover:opacity-90"
             >
               See the builds <ArrowRight className="h-4 w-4" />
             </Link>
@@ -105,19 +105,50 @@ function Home() {
         </div>
       </section>
 
-      <SlideshowSection photos={heroPhotos} interval={6500} className="px-4 py-20 sm:px-6">
+      <section className="bg-background px-4 pt-16 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <h2 className="rule-red text-2xl font-bold">Latest on the bench</h2>
-          <p className="mb-8 text-sm text-muted-foreground">
+          <h2 className="rule-red text-2xl font-bold sm:text-3xl">Latest on the bench</h2>
+          <p className="mt-3 max-w-xl text-sm text-muted-foreground">
             Most recent hackathon, competition and project.
           </p>
-          <div className="grid gap-6 md:grid-cols-3">
-            {preview.map((entry) => (
-              <EntryCard key={entry.slug} entry={entry} />
-            ))}
-          </div>
         </div>
-      </SlideshowSection>
+      </section>
+
+      {preview.map((entry, i) => {
+        const layout = layoutCycle[i % layoutCycle.length]!;
+        const inner = (
+          <div className="mx-auto max-w-6xl">
+            <EntryRow entry={entry} layout={layout} />
+          </div>
+        );
+        if (layout === "overlay") {
+          return (
+            <section key={entry.slug} className="bg-background px-0 py-10 sm:px-6">
+              <div className="mx-auto max-w-7xl">
+                <EntryRow entry={entry} layout={layout} />
+              </div>
+            </section>
+          );
+        }
+        return i % 2 === 0 ? (
+          <section
+            key={entry.slug}
+            className="bg-background px-4 py-12 sm:px-6 sm:py-16"
+          >
+            {inner}
+          </section>
+        ) : (
+          <SlideshowSection
+            key={entry.slug}
+            photos={heroPhotos}
+            interval={9000}
+            className="border-y border-border px-4 py-20 sm:px-6 sm:py-28"
+          >
+            {inner}
+          </SlideshowSection>
+        );
+      })}
+
     </>
   );
 }
