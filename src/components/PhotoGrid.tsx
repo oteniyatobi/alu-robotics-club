@@ -21,7 +21,7 @@ const shapes = [
   "aspect-[5/4]",
 ];
 
-const rounding = ["rounded-none", "rounded-2xl", "rounded-none", "rounded-xl"];
+const rounding = ["rounded-none", "rounded-none", "rounded-none", "rounded-none"];
 
 export function PhotoGrid({
   images,
@@ -59,7 +59,7 @@ export function PhotoGrid({
         src={image.src}
         alt={image.caption}
         loading="lazy"
-        className={`w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100 ${
+        className={`w-full object-cover opacity-60 grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0 ${
           layout === "masonry" ? shapes[i % shapes.length] : "aspect-[4/3]"
         }`}
       />

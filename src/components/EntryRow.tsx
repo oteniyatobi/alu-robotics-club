@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Entry } from "@/data/content";
+import { CATEGORY_LABELS } from "@/data/content";
 
 const routeFor: Record<Entry["category"], string> = {
   hackathon: "/hackathons/$slug",
@@ -8,108 +9,175 @@ const routeFor: Record<Entry["category"], string> = {
   project: "/projects/$slug",
 };
 
-export type EntryLayout = "photo-left" | "photo-right" | "overlay";
+export type EntryLayout = "feature" | "index-row" | "spread";
 
-function Meta({ entry }: { entry: Entry }) {
-  return (
-    <p className="label-mono">
-      {entry.dateLabel} · {entry.location} · {entry.images.length} photos
-    </p>
-  );
+function Kicker({ entry }: { entry: Entry }) {
+  return <span className="kicker">{CATEGORY_LABELS[entry.category]}</span>;
 }
 
-function Tags({ entry }: { entry: Entry }) {
-  if (!entry.tech) return null;
-  return (
-    <ul className="mt-5 flex flex-wrap gap-1.5">
-      {entry.tech.slice(0, 5).map((t) => (
-        <li
-          key={t}
-          className="border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground"
-        >
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function OpenLink({ entry, rounded }: { entry: Entry; rounded?: boolean }) {
+function OpenLink({ entry, label = "View entry" }: { entry: Entry; label?: string }) {
   return (
     <Link
       to={routeFor[entry.category]}
       params={{ slug: entry.slug }}
-      className={`mt-6 inline-flex items-center gap-2 border border-primary px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-primary transition-colors hover:bg-primary hover:text-primary-foreground ${
-        rounded ? "rounded-full" : "rounded-none"
-      }`}
+      className="group/link inline-flex items-center gap-3 bg-primary px-8 py-4 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-white hover:text-navy-deep"
     >
-      Open file <ArrowUpRight className="h-3.5 w-3.5" />
+      {label}
+      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
     </Link>
   );
 }
 
-export function EntryRow({ entry, layout }: { entry: Entry; layout: EntryLayout }) {
-  const hero = entry.images[0];
-
-  if (layout === "overlay") {
-    return (
-      <article className="group relative isolate overflow-hidden rounded-3xl">
-        <img
-          src={hero?.src}
-          alt={entry.title}
-          loading="lazy"
-          className="absolute inset-0 -z-10 h-full w-full object-cover transition duration-[1200ms] group-hover:scale-105"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep via-navy-deep/70 to-navy-deep/20"
-        />
-        <div className="flex min-h-[26rem] flex-col justify-end p-6 sm:min-h-[32rem] sm:p-12">
-          <span className="mb-4 w-fit bg-primary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground">
-            {entry.outcome}
-          </span>
-          <h3 className="max-w-3xl text-3xl font-bold sm:text-5xl">{entry.title}</h3>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {entry.shortDescription}
-          </p>
-          <div className="mt-5">
-            <Meta entry={entry} />
-          </div>
-          <OpenLink entry={entry} rounded />
-        </div>
-      </article>
-    );
-  }
-
-  const photoFirst = layout === "photo-left";
-
+function Photo({
+  entry,
+  index = 0,
+  className = "",
+}: {
+  entry: Entry;
+  index?: number;
+  className?: string;
+}) {
+  const image = entry.images[index];
   return (
-    <article className="group grid items-center gap-8 md:grid-cols-2 md:gap-12">
-      <div
-        className={`relative overflow-hidden border border-border ${
-          photoFirst ? "rounded-none md:order-1" : "rounded-2xl md:order-2"
-        }`}
-      >
-        <img
-          src={hero?.src}
-          alt={entry.title}
-          loading="lazy"
-          className="aspect-[4/3] w-full object-cover opacity-85 transition duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
-        />
-        <span className="absolute left-0 top-0 bg-primary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground">
-          {entry.outcome}
-        </span>
+    <img
+      src={image?.src}
+      alt={image?.caption ?? entry.title}
+      loading="lazy"
+      className={`h-full w-full object-cover opacity-80 grayscale contrast-125 transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 ${className}`}
+    />
+  );
+}
+
+/** Big asymmetric feature: 8/4 split, oversized masthead type, bracket accent. */
+function Feature({ entry, num }: { entry: Entry; num: string }) {
+  return (
+    <article className="group grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-0">
+      <div className="relative z-10 flex flex-col justify-end lg:col-span-8 lg:pr-16">
+        <Kicker entry={entry} />
+        <h3 className="mt-7 text-4xl sm:text-6xl lg:text-7xl">
+          {entry.title.split(" ").slice(0, -1).join(" ") || entry.title}
+          <br />
+          <span className="type-outline">{entry.title.split(" ").slice(-1)}</span>
+        </h3>
+        <p className="mt-7 max-w-md text-lg leading-relaxed">{entry.shortDescription}</p>
+        <div className="mt-9 flex flex-wrap items-stretch gap-8">
+          <OpenLink entry={entry} />
+          <div className="flex flex-col justify-center border-l border-border pl-6">
+            <span className="label-mono">Location</span>
+            <span className="font-medium text-white">{entry.location}</span>
+          </div>
+          <div className="flex flex-col justify-center border-l border-border pl-6">
+            <span className="label-mono">Result</span>
+            <span className="font-medium text-white">{entry.outcome}</span>
+          </div>
+        </div>
       </div>
 
-      <div className={photoFirst ? "md:order-2" : "md:order-1"}>
-        <Meta entry={entry} />
-        <h3 className="mt-3 text-2xl font-bold sm:text-4xl">{entry.title}</h3>
-        <p className="mt-4 leading-relaxed text-muted-foreground">{entry.shortDescription}</p>
-        <Tags entry={entry} />
-        <OpenLink entry={entry} rounded={!photoFirst} />
+      <div className="relative h-[26rem] lg:col-span-4 lg:h-auto">
+        <div className="bracket-bl absolute inset-0 overflow-hidden bg-navy">
+          <Photo entry={entry} />
+        </div>
+        <span className="absolute -top-3 left-4 z-10 bg-primary px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+          {num}
+        </span>
+        <span
+          aria-hidden="true"
+          className="absolute top-12 -right-4 hidden h-px w-8 bg-primary lg:block"
+        />
       </div>
     </article>
   );
 }
 
-export const layoutCycle: EntryLayout[] = ["photo-left", "photo-right", "overlay"];
+/** Lab-notebook index row: number, hairline rules, photo revealed on hover. */
+function IndexRow({ entry, num }: { entry: Entry; num: string }) {
+  return (
+    <Link
+      to={routeFor[entry.category]}
+      params={{ slug: entry.slug }}
+      className="group grid grid-cols-[3rem_1fr] items-start gap-6 border-b border-border py-8 transition-colors hover:bg-navy/60 md:grid-cols-[4rem_1fr_14rem_9rem] md:items-center md:gap-8"
+    >
+      <span className="font-mono text-xs font-bold text-primary">{num}</span>
+      <div className="min-w-0">
+        <span className="label-mono">
+          {CATEGORY_LABELS[entry.category]} · {entry.dateLabel}
+        </span>
+        <h3 className="mt-2 text-2xl transition-colors group-hover:text-primary sm:text-3xl">
+          {entry.title}
+        </h3>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed">{entry.shortDescription}</p>
+      </div>
+      <div className="col-span-2 h-40 overflow-hidden bg-navy md:col-span-1 md:h-24">
+        <Photo entry={entry} index={1} />
+      </div>
+      <div className="col-span-2 md:col-span-1 md:text-right">
+        <span className="label-mono">Result</span>
+        <p className="mt-1 font-mono text-xs font-bold uppercase tracking-widest text-white">
+          {entry.outcome}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+/** Magazine spread: one dominant photo plus a contact-sheet column of thumbs. */
+function Spread({ entry, num }: { entry: Entry; num: string }) {
+  const thumbs = entry.images.slice(1, 4);
+  return (
+    <article className="group grid grid-cols-1 gap-0 md:grid-cols-12">
+      <div className="relative h-[24rem] overflow-hidden bg-navy md:col-span-9 md:h-[34rem]">
+        <Photo entry={entry} />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-transparent"
+        />
+        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
+          <Kicker entry={entry} />
+          <h3 className="mt-5 max-w-2xl text-3xl sm:text-5xl">{entry.title}</h3>
+          <p className="mt-4 max-w-xl text-base leading-relaxed">{entry.shortDescription}</p>
+        </div>
+        <span className="absolute left-0 top-0 bg-primary px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+          {num}
+        </span>
+      </div>
+
+      <div className="flex flex-col divide-y divide-border border-border md:col-span-3 md:border-l">
+        {thumbs.map((image) => (
+          <div key={image.src + image.caption} className="h-28 overflow-hidden bg-navy md:flex-1">
+            <img
+              src={image.src}
+              alt={image.caption}
+              loading="lazy"
+              className="h-full w-full object-cover opacity-50 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+            />
+          </div>
+        ))}
+        <div className="p-6">
+          <span className="label-mono">{entry.dateLabel}</span>
+          <p className="mt-2 font-mono text-xs font-bold uppercase tracking-widest text-white">
+            {entry.outcome}
+          </p>
+          <div className="mt-5">
+            <OpenLink entry={entry} label="Open" />
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function EntryRow({
+  entry,
+  layout,
+  num = "01",
+}: {
+  entry: Entry;
+  layout: EntryLayout;
+  num?: string;
+}) {
+  if (layout === "feature") return <Feature entry={entry} num={num} />;
+  if (layout === "spread") return <Spread entry={entry} num={num} />;
+  return <IndexRow entry={entry} num={num} />;
+}
+
+export const layoutCycle: EntryLayout[] = ["feature", "index-row", "spread"];
