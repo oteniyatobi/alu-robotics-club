@@ -5,16 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * ALU Robotics Club design system.
- * Palette pulled from the ALU logo (deep navy + red + white) and the
- * Robotics Club logo (navy, red, steel grey).
+ * ALU Robotics Club — "Editorial asymmetry".
+ * Locked palette: #0A0F1C ink navy, #131B30 plate navy, #C8102E ALU red, #8A94A6 steel.
+ * Archivo Black headings, Hind body, JetBrains Mono micro-labels only.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -38,37 +38,35 @@
   --color-navy-deep: var(--navy-deep);
   --color-steel: var(--steel);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Hind", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Black", "Hind", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.25rem;
-  /* ALU navy shades */
-  --navy-deep: oklch(0.19 0.075 262);
-  --navy: oklch(0.28 0.095 262);
-  --steel: oklch(0.62 0.02 250);
+  --radius: 0px;
+  --navy-deep: #0a0f1c;
+  --navy: #131b30;
+  --steel: #8a94a6;
 
-  --background: oklch(0.15 0.035 262);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.21 0.055 262);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.19 0.05 262);
-  --popover-foreground: oklch(0.97 0.005 250);
-  /* ALU red */
-  --primary: oklch(0.55 0.21 27);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.28 0.095 262);
-  --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.25 0.05 262);
-  --muted-foreground: oklch(0.72 0.02 250);
-  --accent: oklch(0.55 0.21 27);
-  --accent-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.55 0.21 27);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.38 0.05 262 / 60%);
-  --input: oklch(0.38 0.05 262 / 60%);
-  --ring: oklch(0.55 0.21 27);
+  --background: #0a0f1c;
+  --foreground: #ffffff;
+  --card: #131b30;
+  --card-foreground: #ffffff;
+  --popover: #0f1526;
+  --popover-foreground: #ffffff;
+  --primary: #c8102e;
+  --primary-foreground: #ffffff;
+  --secondary: #131b30;
+  --secondary-foreground: #ffffff;
+  --muted: #131b30;
+  --muted-foreground: #8a94a6;
+  --accent: #c8102e;
+  --accent-foreground: #ffffff;
+  --destructive: #c8102e;
+  --destructive-foreground: #ffffff;
+  --border: rgba(138, 148, 166, 0.2);
+  --input: rgba(138, 148, 166, 0.28);
+  --ring: #c8102e;
 }
 
 @layer base {
@@ -78,7 +76,7 @@
 
   body {
     background-color: var(--color-background);
-    color: var(--color-foreground);
+    color: var(--color-muted-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
@@ -88,16 +86,48 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.88;
+    color: #ffffff;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: #fff;
   }
 }
 
+/* Tiny uppercase metadata label */
 @utility label-mono {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
+}
+
+/* Red kicker: mono label followed by a short rule */
+@utility kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  &::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--color-primary);
+  }
 }
 
 @utility rule-red {
@@ -105,8 +135,29 @@
     content: "";
     display: block;
     width: 3.5rem;
-    height: 3px;
+    height: 2px;
     background: var(--color-primary);
     margin-bottom: 1rem;
+  }
+}
+
+/* Outlined masthead line */
+@utility type-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+/* Corner bracket accent for photo blocks */
+@utility bracket-bl {
+  &::after {
+    content: "";
+    position: absolute;
+    left: -1.25rem;
+    bottom: -1.25rem;
+    width: 7rem;
+    height: 7rem;
+    border-left: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    pointer-events: none;
   }
 }
