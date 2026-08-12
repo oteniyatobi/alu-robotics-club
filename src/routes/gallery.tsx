@@ -44,10 +44,16 @@ function Gallery() {
   return (
     <SlideshowSection photos={slideshowPhotos()} interval={7000} className="px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <h1 className="rule-red text-4xl font-bold sm:text-5xl">Photo wall</h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
-          {images.length} frames across every hackathon, competition and build.
+        <span className="kicker">{images.length} frames on file</span>
+        <h1 className="mt-7 text-5xl sm:text-7xl">
+          Photo
+          <br />
+          <span className="type-outline">wall</span>
+        </h1>
+        <p className="mt-6 max-w-md text-lg leading-relaxed">
+          Every frame across every hackathon, competition and build.
         </p>
+
 
         <div className="mt-8 flex flex-wrap gap-2">
           {filters.map((f) => (
