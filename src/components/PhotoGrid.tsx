@@ -21,7 +21,7 @@ const shapes = [
   "aspect-[5/4]",
 ];
 
-const rounding = ["rounded-none", "rounded-2xl", "rounded-none", "rounded-xl"];
+const rounding = ["rounded-none", "rounded-none", "rounded-none", "rounded-none"];
 
 export function PhotoGrid({
   images,
