@@ -109,7 +109,7 @@ function Home() {
             We design, wire and code autonomous machines out of a lab in Kigali — rovers, sensor
             meshes, arms and sumo bots — then put them in front of judges.
           </p>
-          <div className="grid grid-cols-3 gap-px bg-border lg:col-span-5 lg:grid-cols-6">
+          <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
             {contactSheet.map((image, i) => (
               <div key={i} className="aspect-square overflow-hidden bg-navy">
                 <img
