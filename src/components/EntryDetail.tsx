@@ -40,8 +40,8 @@ export function EntryDetail({ entry }: { entry: Entry }) {
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed">{entry.shortDescription}</p>
             <div className="mt-9 flex flex-wrap items-stretch gap-8">
-              <span className="bg-primary px-8 py-4 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground">
-                {entry.outcome}
+              <span className="btn-alu">
+                <span className="btn-strong">{entry.outcome}</span>
               </span>
               <div className="flex flex-col justify-center border-l border-border pl-6">
                 <span className="label-mono">Frames</span>
