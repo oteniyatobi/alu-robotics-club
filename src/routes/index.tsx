@@ -154,7 +154,7 @@ function Home() {
                     loading="lazy"
                     className="h-full w-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
                   />
-                  <span className="absolute left-4 top-4 bg-primary px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+                  <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
