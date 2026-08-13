@@ -108,7 +108,7 @@ function Home() {
           </p>
           <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
             {contactSheet.map((image, i) => (
-              <div key={i} className="aspect-square overflow-hidden bg-navy">
+              <div key={i} className="aspect-square overflow-hidden rounded-lg bg-navy">
                 <img
                   src={image.src}
                   alt={image.caption}
@@ -147,7 +147,7 @@ function Home() {
                 params={{ slug: entry.slug }}
                 className="group relative border-border p-0 pt-10 md:border-r md:p-10 md:last:border-r-0"
               >
-                <div className="relative mb-8 aspect-[4/5] overflow-hidden bg-navy">
+                <div className="relative mb-8 aspect-[4/5] overflow-hidden rounded-2xl bg-navy">
                   <img
                     src={entry.images[0]?.src}
                     alt={entry.images[0]?.caption ?? entry.title}
