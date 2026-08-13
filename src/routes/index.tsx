@@ -88,7 +88,7 @@ function Home() {
               <img
                 src={headline?.images[0]?.src}
                 alt={headline?.images[0]?.caption ?? "Club build"}
-                className="h-full w-full object-cover opacity-80 grayscale contrast-125 transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+                className="h-full w-full object-cover opacity-80 transition-all duration-700 hover:opacity-100"
               />
             </div>
             <span
@@ -113,7 +113,7 @@ function Home() {
                   src={image.src}
                   alt={image.caption}
                   loading="lazy"
-                  className="h-full w-full object-cover opacity-45 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+                  className="h-full w-full object-cover opacity-45 grayscale transition-all duration-500 hover:opacity-100"
                 />
               </div>
             ))}
@@ -152,7 +152,7 @@ function Home() {
                     src={entry.images[0]?.src}
                     alt={entry.images[0]?.caption ?? entry.title}
                     loading="lazy"
-                    className="h-full w-full object-cover opacity-45 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                    className="h-full w-full object-cover opacity-45 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
                   />
                   <span className="absolute left-4 top-4 bg-primary px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
                     {String(i + 1).padStart(2, "0")}

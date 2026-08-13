@@ -55,7 +55,7 @@ export function EntryDetail({ entry }: { entry: Entry }) {
               <img
                 src={entry.images[0]?.src}
                 alt={entry.images[0]?.caption ?? entry.title}
-                className="h-full w-full object-cover opacity-80 grayscale contrast-125 transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+                className="h-full w-full object-cover opacity-80 transition-all duration-700 hover:opacity-100"
               />
             </div>
           </div>
