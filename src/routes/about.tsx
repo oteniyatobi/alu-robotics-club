@@ -6,13 +6,13 @@ import roboticsLogo from "@/assets/robotics-logo.png.asset.json";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About the Club — ALU Robotics Club" },
+      { title: "About the Club | ALU Robotics Club" },
       {
         name: "description",
         content:
           "The ALU Robotics Club was founded in 2021 at African Leadership University, Kigali. Our mission, our lab, and how to reach us.",
       },
-      { property: "og:title", content: "About the Club — ALU Robotics Club" },
+      { property: "og:title", content: "About the Club | ALU Robotics Club" },
       {
         property: "og:description",
         content: "Who we are, what we build, and where to find us in Kigali.",
@@ -44,11 +44,11 @@ function About() {
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             Founded in {CLUB.founded} at {CLUB.university} in {CLUB.city}, the ALU Robotics Club
             is a student-run build shop. We take machines from a sketch on a whiteboard to
-            something that drives, senses or grips — then we put it in front of judges.
+            something that drives, senses or grips, then we put it in front of judges.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Our mission is simple: build hardware in Africa that solves problems in Africa, and
-            keep a documented record of every attempt — the wins and the drivetrains that died at
+            keep a documented record of every attempt, the wins and the drivetrains that died at
             4am. {entries.length} entries are on file so far.
           </p>
         </div>
@@ -73,7 +73,7 @@ function About() {
         <div className="mx-auto max-w-4xl">
           <h2 className="rule-red text-2xl font-bold">Contact</h2>
           <p className="mt-3 text-muted-foreground">
-            Sponsorship, competition invites or lab collaborations — mail the club directly.
+            Sponsorship, competition invites or lab collaborations, mail the club directly.
           </p>
           <a href={`mailto:${CLUB.email}`} className="btn-alu mt-6 normal-case tracking-normal">
             {CLUB.email}

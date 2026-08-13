@@ -120,7 +120,7 @@ export function EntryDetail({ entry }: { entry: Entry }) {
             <span className="type-outline">sheet</span>
           </h2>
           <p className="mb-10 mt-5 max-w-md text-sm">
-            {entry.images.length} frames — click any to open full size.
+            {entry.images.length} frames, click any to open full size.
           </p>
           <PhotoGrid images={entry.images} layout="masonry" />
         </div>

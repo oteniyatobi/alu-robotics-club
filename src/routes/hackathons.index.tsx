@@ -4,13 +4,13 @@ import { CategoryIndex } from "@/components/CategoryIndex";
 export const Route = createFileRoute("/hackathons/")({
   head: () => ({
     meta: [
-      { title: "Hackathons — ALU Robotics Club" },
+      { title: "Hackathons | ALU Robotics Club" },
       {
         name: "description",
         content:
           "Every hackathon the ALU Robotics Club has entered: what we built, where, the outcome, and the full photo set from each weekend.",
       },
-      { property: "og:title", content: "Hackathons — ALU Robotics Club" },
+      { property: "og:title", content: "Hackathons | ALU Robotics Club" },
       {
         property: "og:description",
         content: "Hardware hackathon builds and results from the ALU Robotics Club in Kigali.",

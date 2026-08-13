@@ -7,13 +7,13 @@ import { allImages, slideshowPhotos, CATEGORY_LABELS, type Category } from "@/da
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Photo Gallery — ALU Robotics Club" },
+      { title: "Photo Gallery | ALU Robotics Club" },
       {
         name: "description",
         content:
           "Every photo from every ALU Robotics Club hackathon, competition and project in one wall, filterable by category.",
       },
-      { property: "og:title", content: "Photo Gallery — ALU Robotics Club" },
+      { property: "og:title", content: "Photo Gallery | ALU Robotics Club" },
       {
         property: "og:description",
         content: "The full photo wall: builds, arenas and late-night lab sessions in Kigali.",

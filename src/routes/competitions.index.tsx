@@ -4,13 +4,13 @@ import { CategoryIndex } from "@/components/CategoryIndex";
 export const Route = createFileRoute("/competitions/")({
   head: () => ({
     meta: [
-      { title: "Competitions — ALU Robotics Club" },
+      { title: "Competitions | ALU Robotics Club" },
       {
         name: "description",
         content:
           "Formal robotics competition record for the ALU Robotics Club: rankings, results, build detail and event photo sets.",
       },
-      { property: "og:title", content: "Competitions — ALU Robotics Club" },
+      { property: "og:title", content: "Competitions | ALU Robotics Club" },
       {
         property: "og:description",
         content: "Rankings and results from robotics competitions across East Africa.",

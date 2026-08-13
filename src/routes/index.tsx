@@ -7,13 +7,13 @@ import { CLUB, latest, slideshowPhotos, entries, CATEGORY_LABELS } from "@/data/
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ALU Robotics Club — Builds, Hackathons & Competition Results" },
+      { title: "ALU Robotics Club | Builds, Hackathons & Competition Results" },
       {
         name: "description",
         content:
           "The ALU Robotics Club in Kigali builds autonomous machines and enters hackathons and robotics competitions. Photos, results and build write-ups.",
       },
-      { property: "og:title", content: "ALU Robotics Club — Builds, Hackathons & Competitions" },
+      { property: "og:title", content: "ALU Robotics Club | Builds, Hackathons & Competitions" },
       {
         property: "og:description",
         content:
@@ -103,8 +103,8 @@ function Home() {
       <section className="border-y border-border bg-background px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
           <p className="text-2xl leading-tight text-white sm:text-3xl lg:col-span-7">
-            We design, wire and code autonomous machines out of a lab in Kigali — rovers, sensor
-            meshes, arms and sumo bots — then put them in front of judges.
+            We design, wire and code autonomous machines out of a lab in Kigali, rovers, sensor
+            meshes, arms and sumo bots, then put them in front of judges.
           </p>
           <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
             {contactSheet.map((image, i) => (
