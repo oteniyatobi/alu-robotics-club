@@ -59,7 +59,7 @@ export function PhotoGrid({
         src={image.src}
         alt={image.caption}
         loading="lazy"
-        className={`w-full object-cover opacity-60 transition duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0 ${
+        className={`w-full object-cover opacity-60 transition duration-500 group-hover:scale-105 group-hover:opacity-100 ${
           layout === "masonry" ? shapes[i % shapes.length] : "aspect-[4/3]"
         }`}
       />
