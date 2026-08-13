@@ -66,7 +66,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border px-4 py-5 text-center sm:px-6">
         <p className="label-mono">
-          {CLUB.name} — {CLUB.university} — Est. {CLUB.founded}
+          {CLUB.name}, {CLUB.university}, Est. {CLUB.founded}
         </p>
       </div>
     </footer>

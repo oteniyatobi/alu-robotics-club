@@ -7,13 +7,13 @@ import { CLUB, latest, slideshowPhotos, entries, CATEGORY_LABELS } from "@/data/
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ALU Robotics Club — Builds, Hackathons & Competition Results" },
+      { title: "ALU Robotics Club | Builds, Hackathons & Competition Results" },
       {
         name: "description",
         content:
           "The ALU Robotics Club in Kigali builds autonomous machines and enters hackathons and robotics competitions. Photos, results and build write-ups.",
       },
-      { property: "og:title", content: "ALU Robotics Club — Builds, Hackathons & Competitions" },
+      { property: "og:title", content: "ALU Robotics Club | Builds, Hackathons & Competitions" },
       {
         property: "og:description",
         content:
@@ -71,15 +71,11 @@ function Home() {
                 See the <span className="btn-strong">builds</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <div className="flex flex-col justify-center border-l border-border pl-6">
-                <span className="label-mono">Base</span>
-                <span className="font-medium text-white">{CLUB.university}</span>
-              </div>
-              <div className="flex flex-col justify-center border-l border-border pl-6">
-                <span className="label-mono">Entries on file</span>
-                <span className="font-medium text-white">{entries.length}</span>
-              </div>
+              <Link to="/gallery" className="btn-alu-ghost group">
+                Photo <span className="btn-strong">wall</span>
+              </Link>
             </div>
+
           </div>
 
           {/* Tall portrait plate with red bracket */}
@@ -99,12 +95,16 @@ function Home() {
         </div>
       </SlideshowSection>
 
-      {/* ── Short text-only band: statement + contact sheet ── */}
-      <section className="border-y border-border bg-background px-4 py-16 sm:px-6 sm:py-20">
+      {/* Short statement band over a slideshow */}
+      <SlideshowSection
+        photos={slideshowPhotos("project")}
+        interval={6000}
+        className="border-y border-border px-4 py-16 sm:px-6 sm:py-20"
+      >
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
           <p className="text-2xl leading-tight text-white sm:text-3xl lg:col-span-7">
-            We design, wire and code autonomous machines out of a lab in Kigali — rovers, sensor
-            meshes, arms and sumo bots — then put them in front of judges.
+            We design, wire and code autonomous machines out of a lab in Kigali, rovers, sensor
+            meshes, arms and sumo bots, then put them in front of judges.
           </p>
           <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
             {contactSheet.map((image, i) => (
@@ -119,10 +119,15 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </SlideshowSection>
 
-      {/* ── Preview strip: three vertical magazine columns ── */}
-      <section className="bg-background px-4 py-20 sm:px-6 sm:py-24">
+      {/* Preview strip over a slideshow */}
+      <SlideshowSection
+        photos={slideshowPhotos("competition")}
+        interval={7000}
+        className="px-4 py-20 sm:px-6 sm:py-24"
+      >
+
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -172,16 +177,21 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </SlideshowSection>
 
-      {/* ── Tall photo-dominant spread of the headline entry ── */}
+      {/* Tall photo-dominant spread of the headline entry */}
       {headline && (
-        <section className="bg-background px-0 pb-24 sm:px-6">
+        <SlideshowSection
+          photos={slideshowPhotos("hackathon")}
+          interval={8000}
+          className="px-4 pb-24 pt-16 sm:px-6"
+        >
           <div className="mx-auto max-w-7xl">
             <EntryRow entry={headline} layout="spread" num="01" />
           </div>
-        </section>
+        </SlideshowSection>
       )}
+
     </>
   );
 }

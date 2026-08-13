@@ -12,7 +12,7 @@ export const Route = createFileRoute("/competitions/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Competition not found — ALU Robotics Club" },
+          { title: "Competition not found | ALU Robotics Club" },
           { name: "robots", content: "noindex" },
         ],
       };
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/competitions/$slug")({
     const { entry } = loaderData;
     return {
       meta: [
-        { title: `${entry.title} — ALU Robotics Club` },
+        { title: `${entry.title} | ALU Robotics Club` },
         { name: "description", content: entry.shortDescription },
-        { property: "og:title", content: `${entry.title} — ALU Robotics Club` },
+        { property: "og:title", content: `${entry.title} | ALU Robotics Club` },
         { property: "og:description", content: entry.shortDescription },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },

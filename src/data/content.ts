@@ -3,11 +3,11 @@
  *
  * To add a new hackathon / competition / project:
  *   1. Copy any entry object below.
- *   2. Change the fields (keep `slug` unique — it becomes the page URL).
+ *   2. Change the fields (keep `slug` unique, it becomes the page URL).
  *   3. Swap the `images` array: each item is { src, caption }.
  *      Upload photos, then replace `src: PLACEHOLDER[n]` with
  *      `src: myPhotoImport` (add `import myPhoto from "@/assets/my-photo.jpg"` at top).
- *   4. Nothing else to edit — cards, detail pages, galleries and the
+ *   4. Nothing else to edit, cards, detail pages, galleries and the
  *      background slideshows all read from this file automatically.
  */
 
@@ -48,7 +48,7 @@ function placeholders(label: string, count = 12): EntryImage[] {
   const seed = seedCounter++;
   return Array.from({ length: count }, (_, i) => ({
     src: POOL[(i + seed) % POOL.length] as string,
-    caption: `PLACEHOLDER ${String(i + 1).padStart(2, "0")} — ${label}`,
+    caption: `PLACEHOLDER ${String(i + 1).padStart(2, "0")}, ${label}`,
   }));
 }
 
@@ -68,7 +68,7 @@ export const entries: Entry[] = [
       "The rover ran a differential drive on salvaged gearmotors, an ESP32 doing sensor fusion, and a capacitive soil probe on a servo arm that drops, samples, and retracts without stopping the chassis.",
       "By the final demo the unit had logged 40 samples across a mock plot with zero manual intervention. Judges flagged the retract mechanism as the reason we beat the field.",
     ],
-    outcome: "1st place — Won",
+    outcome: "1st place, Won",
     tech: ["ESP32", "C++ / PlatformIO", "Capacitive soil probe", "3D-printed chassis"],
     team: ["Drivetrain squad", "Firmware squad", "Sensing squad"],
     images: placeholders("Kigali Hardware Hack"),
@@ -86,7 +86,7 @@ export const entries: Entry[] = [
       "Our own sprint, run to stress-test new members before competition season. No mentors on the floor after midnight.",
       "Winning build was a line-following delivery cart with a magnetic docking tray. Two other teams shipped working obstacle-avoidance bases; one drivetrain died at 4am and got rebuilt in ninety minutes.",
     ],
-    outcome: "Hosted — 4 working builds shipped",
+    outcome: "Hosted, 4 working builds shipped",
     tech: ["Arduino Nano", "IR array", "Li-ion packs", "Laser-cut acrylic"],
     images: placeholders("ALU Build Sprint"),
   },
@@ -100,10 +100,10 @@ export const entries: Entry[] = [
     shortDescription:
       "Vision-guided sorting arm built in 48 hours against 22 university teams. Placed second.",
     longDescription: [
-      "We brought a pre-tested arm skeleton and spent the weekend on the perception stack instead of on brackets — the right trade.",
+      "We brought a pre-tested arm skeleton and spent the weekend on the perception stack instead of on brackets, the right trade.",
       "A quantised classifier on a Raspberry Pi drove a 4-DOF arm sorting waste into three bins at roughly 88% accuracy on the judges' unseen set.",
     ],
-    outcome: "2nd place — Placed",
+    outcome: "2nd place, Placed",
     tech: ["Raspberry Pi 4", "TensorFlow Lite", "PCA9685 servo driver", "OpenCV"],
     images: placeholders("East Africa AI + Hardware Jam"),
   },
@@ -120,9 +120,9 @@ export const entries: Entry[] = [
       "Autonomous navigation and payload delivery league. Finished 2nd overall out of 18 schools.",
     longDescription: [
       "Three rounds: timed maze, payload delivery, and a head-to-head arena. Our maze run held the fastest recorded time until the final heat.",
-      "Payload delivery cost us the top step — a gripper compliance issue on uneven decking. The fix is already on the bench for next season.",
+      "Payload delivery cost us the top step, a gripper compliance issue on uneven decking. The fix is already on the bench for next season.",
     ],
-    outcome: "2nd of 18 — Finalist",
+    outcome: "2nd of 18, Finalist",
     tech: ["ROS 2", "LiDAR", "Odrive BLDC", "Custom gripper"],
     images: placeholders("Pan-African Robotics League"),
   },
@@ -139,7 +139,7 @@ export const entries: Entry[] = [
       "Our bot cleared the track in three of four heats without a touch penalty. The lab notebook we kept through build season won documentation outright.",
       "Judges specifically called out the wiring harness and the repeatability of our calibration routine.",
     ],
-    outcome: "1st in category — Won",
+    outcome: "1st in category, Won",
     tech: ["STM32", "Encoder odometry", "PID tuning rig"],
     images: placeholders("Rwanda National Championship"),
   },
@@ -156,7 +156,7 @@ export const entries: Entry[] = [
       "Weight class discipline decided this one. Our lighter chassis had better edge detection but lost pushing matches against steel-plated opponents.",
       "Takeaway logged: traction beats torque at this scale. Next build runs a wider wheelbase and softer compound tyres.",
     ],
-    outcome: "Semi-finalist — Participated",
+    outcome: "Semi-finalist, Participated",
     tech: ["Arduino Pro Mini", "IR edge sensors", "N20 gearmotors"],
     images: placeholders("Sumo Bot Open"),
   },
@@ -210,7 +210,7 @@ export const entries: Entry[] = [
       "Tendon-driven fingers on printed PETG, actuated by four micro servos and switched between grips by EMG thresholds on the forearm.",
       "Version two cut the part count by a third and doubled grip force over the original build.",
     ],
-    outcome: "Completed — v2 shipped",
+    outcome: "Completed, v2 shipped",
     tech: ["EMG sensor", "PETG printing", "Micro servos", "Arduino"],
     images: placeholders("Prosthetic Hand v2"),
   },

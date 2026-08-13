@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { SlideshowSection } from "@/components/SlideshowSection";
 import type { Entry } from "@/data/content";
-import { CATEGORY_LABELS } from "@/data/content";
+import { CATEGORY_LABELS, slideshowPhotos } from "@/data/content";
 
 const indexRoute: Record<Entry["category"], string> = {
   hackathon: "/hackathons",
@@ -62,7 +62,11 @@ export function EntryDetail({ entry }: { entry: Entry }) {
         </div>
       </SlideshowSection>
 
-      <section className="border-y border-border bg-background px-4 py-16 sm:px-6 sm:py-20">
+      <SlideshowSection
+        photos={slideshowPhotos(entry.category)}
+        interval={8000}
+        className="border-y border-border px-4 py-16 sm:px-6 sm:py-20"
+      >
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
           <div className="space-y-6 lg:col-span-7">
             <span className="kicker">Write-up</span>
@@ -109,7 +113,7 @@ export function EntryDetail({ entry }: { entry: Entry }) {
             )}
           </aside>
         </div>
-      </section>
+      </SlideshowSection>
 
       <SlideshowSection photos={photos} className="px-4 py-20 sm:px-6 sm:py-28">
         <div className="mx-auto max-w-7xl">
@@ -120,7 +124,7 @@ export function EntryDetail({ entry }: { entry: Entry }) {
             <span className="type-outline">sheet</span>
           </h2>
           <p className="mb-10 mt-5 max-w-md text-sm">
-            {entry.images.length} frames — click any to open full size.
+            {entry.images.length} frames, click any to open full size.
           </p>
           <PhotoGrid images={entry.images} layout="masonry" />
         </div>
