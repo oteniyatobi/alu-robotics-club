@@ -62,11 +62,7 @@ function Gallery() {
               type="button"
               onClick={() => setFilter(f.key)}
               aria-pressed={filter === f.key}
-              className={`border px-4 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${
-                filter === f.key
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-muted-foreground hover:border-primary"
-              }`}
+              className={filter === f.key ? "btn-alu" : "btn-alu-ghost text-muted-foreground"}
             >
               {f.label}
             </button>

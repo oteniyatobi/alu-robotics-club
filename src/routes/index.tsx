@@ -67,11 +67,8 @@ function Home() {
             <p className="mt-8 max-w-md text-lg leading-relaxed">{CLUB.tagline}</p>
 
             <div className="mt-10 flex flex-wrap items-stretch gap-8">
-              <Link
-                to="/projects"
-                className="group inline-flex items-center gap-3 bg-primary px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-white hover:text-navy-deep"
-              >
-                See the builds
+              <Link to="/projects" className="btn-alu group">
+                See the <span className="btn-strong">builds</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="flex flex-col justify-center border-l border-border pl-6">
@@ -91,7 +88,7 @@ function Home() {
               <img
                 src={headline?.images[0]?.src}
                 alt={headline?.images[0]?.caption ?? "Club build"}
-                className="h-full w-full object-cover opacity-80 grayscale contrast-125 transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+                className="h-full w-full object-cover opacity-80 transition-all duration-700 hover:opacity-100"
               />
             </div>
             <span
@@ -111,12 +108,12 @@ function Home() {
           </p>
           <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
             {contactSheet.map((image, i) => (
-              <div key={i} className="aspect-square overflow-hidden bg-navy">
+              <div key={i} className="aspect-square overflow-hidden rounded-lg bg-navy">
                 <img
                   src={image.src}
                   alt={image.caption}
                   loading="lazy"
-                  className="h-full w-full object-cover opacity-45 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+                  className="h-full w-full object-cover opacity-70 transition-all duration-500 hover:opacity-100"
                 />
               </div>
             ))}
@@ -150,14 +147,14 @@ function Home() {
                 params={{ slug: entry.slug }}
                 className="group relative border-border p-0 pt-10 md:border-r md:p-10 md:last:border-r-0"
               >
-                <div className="relative mb-8 aspect-[4/5] overflow-hidden bg-navy">
+                <div className="relative mb-8 aspect-[4/5] overflow-hidden rounded-2xl bg-navy">
                   <img
                     src={entry.images[0]?.src}
                     alt={entry.images[0]?.caption ?? entry.title}
                     loading="lazy"
-                    className="h-full w-full object-cover opacity-45 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                    className="h-full w-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
                   />
-                  <span className="absolute left-4 top-4 bg-primary px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+                  <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>

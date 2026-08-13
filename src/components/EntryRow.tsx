@@ -20,7 +20,7 @@ function OpenLink({ entry, label = "View entry" }: { entry: Entry; label?: strin
     <Link
       to={routeFor[entry.category]}
       params={{ slug: entry.slug }}
-      className="group/link inline-flex items-center gap-3 bg-primary px-8 py-4 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-white hover:text-navy-deep"
+      className="btn-alu group/link"
     >
       {label}
       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
@@ -43,7 +43,7 @@ function Photo({
       src={image?.src}
       alt={image?.caption ?? entry.title}
       loading="lazy"
-      className={`h-full w-full object-cover opacity-80 grayscale contrast-125 transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 ${className}`}
+      className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${className}`}
     />
   );
 }
@@ -77,7 +77,7 @@ function Feature({ entry, num }: { entry: Entry; num: string }) {
         <div className="bracket-bl absolute inset-0 overflow-hidden bg-navy">
           <Photo entry={entry} />
         </div>
-        <span className="absolute -top-3 left-4 z-10 bg-primary px-2 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+        <span className="absolute -top-3 left-4 z-10 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
           {num}
         </span>
         <span
@@ -95,7 +95,7 @@ function IndexRow({ entry, num }: { entry: Entry; num: string }) {
     <Link
       to={routeFor[entry.category]}
       params={{ slug: entry.slug }}
-      className="group grid grid-cols-[3rem_1fr] items-start gap-6 border-b border-border py-8 transition-colors hover:bg-navy/60 md:grid-cols-[4rem_1fr_14rem_9rem] md:items-center md:gap-8"
+      className="group grid grid-cols-[3rem_1fr] items-start gap-6 rounded-2xl border-b border-border px-4 py-8 transition-colors hover:bg-navy/60 md:grid-cols-[4rem_1fr_14rem_9rem] md:items-center md:gap-8"
     >
       <span className="font-mono text-xs font-bold text-primary">{num}</span>
       <div className="min-w-0">
@@ -107,7 +107,7 @@ function IndexRow({ entry, num }: { entry: Entry; num: string }) {
         </h3>
         <p className="mt-3 max-w-xl text-sm leading-relaxed">{entry.shortDescription}</p>
       </div>
-      <div className="col-span-2 h-40 overflow-hidden bg-navy md:col-span-1 md:h-24">
+      <div className="col-span-2 h-40 overflow-hidden rounded-xl bg-navy md:col-span-1 md:h-24">
         <Photo entry={entry} index={1} />
       </div>
       <div className="col-span-2 md:col-span-1 md:text-right">
@@ -125,7 +125,7 @@ function Spread({ entry, num }: { entry: Entry; num: string }) {
   const thumbs = entry.images.slice(1, 4);
   return (
     <article className="group grid grid-cols-1 gap-0 md:grid-cols-12">
-      <div className="relative h-[24rem] overflow-hidden bg-navy md:col-span-9 md:h-[34rem]">
+      <div className="relative h-[24rem] overflow-hidden rounded-3xl bg-navy md:col-span-9 md:h-[34rem]">
         <Photo entry={entry} />
         <div
           aria-hidden="true"
@@ -136,19 +136,19 @@ function Spread({ entry, num }: { entry: Entry; num: string }) {
           <h3 className="mt-5 max-w-2xl text-3xl sm:text-5xl">{entry.title}</h3>
           <p className="mt-4 max-w-xl text-base leading-relaxed">{entry.shortDescription}</p>
         </div>
-        <span className="absolute left-0 top-0 bg-primary px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
+        <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
           {num}
         </span>
       </div>
 
       <div className="flex flex-col divide-y divide-border border-border md:col-span-3 md:border-l">
         {thumbs.map((image) => (
-          <div key={image.src + image.caption} className="h-28 overflow-hidden bg-navy md:flex-1">
+          <div key={image.src + image.caption} className="h-28 overflow-hidden rounded-xl bg-navy md:flex-1">
             <img
               src={image.src}
               alt={image.caption}
               loading="lazy"
-              className="h-full w-full object-cover opacity-50 grayscale transition-all duration-700 hover:opacity-100 hover:grayscale-0"
+              className="h-full w-full object-cover opacity-80 transition-opacity duration-700 hover:opacity-100"
             />
           </div>
         ))}

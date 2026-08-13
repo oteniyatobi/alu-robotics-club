@@ -23,7 +23,7 @@ export function Navbar() {
           <img
             src={roboticsLogo.url}
             alt="ALU Robotics Club logo"
-            className="h-10 w-10 shrink-0 rounded-sm bg-white object-contain p-0.5"
+            className="h-10 w-10 shrink-0 rounded-lg bg-white object-contain p-0.5"
             width={40}
             height={40}
           />
@@ -31,7 +31,7 @@ export function Navbar() {
           <img
             src={aluLogo.url}
             alt="African Leadership University logo"
-            className="hidden h-9 w-9 shrink-0 rounded-sm object-contain sm:block"
+            className="hidden h-9 w-9 shrink-0 rounded-lg object-contain sm:block"
             width={36}
             height={36}
           />
@@ -46,10 +46,10 @@ export function Navbar() {
               key={link.to}
               to={link.to}
               activeOptions={{ exact: link.to === "/" }}
-              className="rounded-sm px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+              className="rounded-full px-4 py-2 text-[13px] font-medium uppercase tracking-[0.06em] text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
               activeProps={{
                 className:
-                  "rounded-sm px-3 py-2 font-mono text-xs uppercase tracking-widest text-foreground border-b-2 border-primary",
+                  "rounded-full bg-primary px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.06em] text-primary-foreground",
               }}
             >
               {link.label}
@@ -62,7 +62,7 @@ export function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="shrink-0 rounded-sm border border-border p-2 text-foreground lg:hidden"
+          className="shrink-0 rounded-full border border-border p-2 text-foreground lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -76,10 +76,10 @@ export function Navbar() {
               to={link.to}
               activeOptions={{ exact: link.to === "/" }}
               onClick={() => setOpen(false)}
-              className="block border-b border-border px-6 py-4 font-mono text-xs uppercase tracking-widest text-muted-foreground"
+              className="block border-b border-border px-6 py-4 text-sm font-medium uppercase tracking-[0.06em] text-muted-foreground"
               activeProps={{
                 className:
-                  "block border-b border-border px-6 py-4 font-mono text-xs uppercase tracking-widest text-primary",
+                  "block border-b border-border px-6 py-4 text-sm font-semibold uppercase tracking-[0.06em] text-primary",
               }}
             >
               {link.label}
