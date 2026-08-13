@@ -29,37 +29,51 @@ export function CategoryIndex({
 
   return (
     <>
-      {/* Short text-only header band with editorial masthead */}
-      <section className="border-b border-border bg-background px-4 py-16 sm:px-6 sm:py-24">
+      {/* Header band over a slideshow */}
+      <SlideshowSection
+        photos={slideshowPhotos(category)}
+        overlay="hero"
+        interval={6000}
+        className="border-b border-border px-4 py-16 sm:px-6 sm:py-24"
+      >
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <span className="kicker">{items.length} entries on file</span>
-            <h1 className="mt-7 max-w-3xl text-5xl sm:text-7xl">{heading}</h1>
+            <h1 className="max-w-3xl text-5xl sm:text-7xl">{heading}</h1>
           </div>
           <p className="self-end border-l border-primary pl-6 text-lg leading-relaxed lg:col-span-4">
             {blurb}
           </p>
         </div>
-      </section>
+      </SlideshowSection>
 
       {blocks.map((block, bi) => {
         const key = block.items[0]!.entry.slug;
 
         if (block.layout === "index-row") {
           return (
-            <section key={key} className="bg-background px-4 py-10 sm:px-6 sm:py-14">
+            <SlideshowSection
+              key={key}
+              photos={slideshowPhotos(category)}
+              interval={8000}
+              className="px-4 py-10 sm:px-6 sm:py-14"
+            >
               <div className="mx-auto max-w-7xl border-t border-border">
                 {block.items.map(({ entry, num }) => (
                   <EntryRow key={entry.slug} entry={entry} layout="index-row" num={num} />
                 ))}
               </div>
-            </section>
+            </SlideshowSection>
           );
         }
 
         if (block.layout === "spread") {
           return (
-            <section key={key} className="bg-background px-0 py-6 sm:px-6 sm:py-12">
+            <SlideshowSection
+              key={key}
+              photos={slideshowPhotos(category)}
+              interval={10000}
+              className="px-4 py-10 sm:px-6 sm:py-16"
+            >
               <div className="mx-auto max-w-7xl">
                 <EntryRow
                   entry={block.items[0]!.entry}
@@ -67,7 +81,7 @@ export function CategoryIndex({
                   num={block.items[0]!.num}
                 />
               </div>
-            </section>
+            </SlideshowSection>
           );
         }
 
@@ -77,24 +91,25 @@ export function CategoryIndex({
           </div>
         );
 
-        return bi % 2 === 0 ? (
+        return (
           <SlideshowSection
             key={key}
             photos={slideshowPhotos(category)}
-            interval={9000}
-            className="px-4 py-24 sm:px-6 sm:py-32"
+            interval={bi % 2 === 0 ? 9000 : 7000}
+            className={
+              bi % 2 === 0
+                ? "px-4 py-24 sm:px-6 sm:py-32"
+                : "border-y border-border px-4 py-20 sm:px-6 sm:py-24"
+            }
           >
             {inner}
           </SlideshowSection>
-        ) : (
-          <section
-            key={key}
-            className="border-y border-border bg-background px-4 py-20 sm:px-6 sm:py-24"
-          >
-            {inner}
-          </section>
         );
       })}
+    </>
+  );
+}
+
     </>
   );
 }
