@@ -75,10 +75,7 @@ function About() {
           <p className="mt-3 text-muted-foreground">
             Sponsorship, competition invites or lab collaborations — mail the club directly.
           </p>
-          <a
-            href={`mailto:${CLUB.email}`}
-            className="mt-6 inline-block bg-primary px-5 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground"
-          >
+          <a href={`mailto:${CLUB.email}`} className="btn-alu mt-6 normal-case tracking-normal">
             {CLUB.email}
           </a>
           <ul className="mt-8 flex flex-wrap gap-3">
@@ -88,7 +85,7 @@ function About() {
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="border border-border px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:border-primary hover:text-foreground"
+                  className="btn-alu-ghost text-muted-foreground"
                 >
                   {s.label}
                 </a>
