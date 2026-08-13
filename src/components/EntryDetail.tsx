@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { PhotoGrid } from "@/components/PhotoGrid";
 import { SlideshowSection } from "@/components/SlideshowSection";
 import type { Entry } from "@/data/content";
-import { CATEGORY_LABELS } from "@/data/content";
+import { CATEGORY_LABELS, slideshowPhotos } from "@/data/content";
 
 const indexRoute: Record<Entry["category"], string> = {
   hackathon: "/hackathons",
