@@ -67,11 +67,8 @@ function Home() {
             <p className="mt-8 max-w-md text-lg leading-relaxed">{CLUB.tagline}</p>
 
             <div className="mt-10 flex flex-wrap items-stretch gap-8">
-              <Link
-                to="/projects"
-                className="group inline-flex items-center gap-3 bg-primary px-10 py-5 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-white hover:text-navy-deep"
-              >
-                See the builds
+              <Link to="/projects" className="btn-alu group">
+                See the <span className="btn-strong">builds</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="flex flex-col justify-center border-l border-border pl-6">
