@@ -109,7 +109,3 @@ export function CategoryIndex({
     </>
   );
 }
-
-    </>
-  );
-}
