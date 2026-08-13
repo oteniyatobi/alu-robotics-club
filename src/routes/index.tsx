@@ -71,15 +71,11 @@ function Home() {
                 See the <span className="btn-strong">builds</span>
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <div className="flex flex-col justify-center border-l border-border pl-6">
-                <span className="label-mono">Base</span>
-                <span className="font-medium text-white">{CLUB.university}</span>
-              </div>
-              <div className="flex flex-col justify-center border-l border-border pl-6">
-                <span className="label-mono">Entries on file</span>
-                <span className="font-medium text-white">{entries.length}</span>
-              </div>
+              <Link to="/gallery" className="btn-alu-ghost group">
+                Photo <span className="btn-strong">wall</span>
+              </Link>
             </div>
+
           </div>
 
           {/* Tall portrait plate with red bracket */}
