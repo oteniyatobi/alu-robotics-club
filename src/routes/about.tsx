@@ -49,25 +49,28 @@ function About() {
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Our mission is simple: build hardware in Africa that solves problems in Africa, and
             keep a documented record of every attempt, the wins and the drivetrains that died at
-            4am. {entries.length} entries are on file so far.
+            4am.
           </p>
         </div>
       </SlideshowSection>
 
-      <section className="border-y border-border bg-background px-4 py-16 sm:px-6">
-        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-3">
+      <SlideshowSection
+        photos={slideshowPhotos("competition")}
+        className="border-y border-border px-4 py-16 sm:px-6"
+      >
+        <div className="mx-auto grid max-w-4xl gap-8 sm:grid-cols-2">
           {[
             { k: "Founded", v: CLUB.founded },
-            { k: "Base", v: CLUB.city },
-            { k: "Entries on file", v: String(entries.length) },
+            { k: "City", v: CLUB.city },
           ].map((s) => (
-            <div key={s.k} className="border border-border p-5">
+            <div key={s.k} className="rounded-2xl border border-border bg-navy/60 p-5">
               <p className="label-mono">{s.k}</p>
               <p className="mt-2 font-mono text-2xl font-bold text-primary">{s.v}</p>
             </div>
           ))}
         </div>
-      </section>
+      </SlideshowSection>
+
 
       <SlideshowSection photos={slideshowPhotos("project")} className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-4xl">
