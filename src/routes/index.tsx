@@ -95,8 +95,12 @@ function Home() {
         </div>
       </SlideshowSection>
 
-      {/* ── Short text-only band: statement + contact sheet ── */}
-      <section className="border-y border-border bg-background px-4 py-16 sm:px-6 sm:py-20">
+      {/* Short statement band over a slideshow */}
+      <SlideshowSection
+        photos={slideshowPhotos("project")}
+        interval={6000}
+        className="border-y border-border px-4 py-16 sm:px-6 sm:py-20"
+      >
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
           <p className="text-2xl leading-tight text-white sm:text-3xl lg:col-span-7">
             We design, wire and code autonomous machines out of a lab in Kigali, rovers, sensor
@@ -115,10 +119,15 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </SlideshowSection>
 
-      {/* ── Preview strip: three vertical magazine columns ── */}
-      <section className="bg-background px-4 py-20 sm:px-6 sm:py-24">
+      {/* Preview strip over a slideshow */}
+      <SlideshowSection
+        photos={slideshowPhotos("competition")}
+        interval={7000}
+        className="px-4 py-20 sm:px-6 sm:py-24"
+      >
+
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
