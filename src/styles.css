@@ -189,10 +189,11 @@
   font-weight: 700;
 }
 
-/* Outlined display line */
+/* Secondary display line: lighter weight, brand-tinted (ALU-style two-tone heading) */
 @utility type-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 400;
+  -webkit-text-stroke: 0;
 }
 
 /* Soft corner accent for photo blocks */
