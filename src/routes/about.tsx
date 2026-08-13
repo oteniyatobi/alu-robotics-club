@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SlideshowSection } from "@/components/SlideshowSection";
-import { CLUB, slideshowPhotos, entries } from "@/data/content";
+import { CLUB, slideshowPhotos } from "@/data/content";
 import roboticsLogo from "@/assets/robotics-logo.png.asset.json";
 
 export const Route = createFileRoute("/about")({
