@@ -20,7 +20,7 @@ function OpenLink({ entry, label = "View entry" }: { entry: Entry; label?: strin
     <Link
       to={routeFor[entry.category]}
       params={{ slug: entry.slug }}
-      className="group/link inline-flex items-center gap-3 bg-primary px-8 py-4 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-white hover:text-navy-deep"
+      className="btn-alu group/link"
     >
       {label}
       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
