@@ -177,16 +177,21 @@ function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </SlideshowSection>
 
-      {/* ── Tall photo-dominant spread of the headline entry ── */}
+      {/* Tall photo-dominant spread of the headline entry */}
       {headline && (
-        <section className="bg-background px-0 pb-24 sm:px-6">
+        <SlideshowSection
+          photos={slideshowPhotos("hackathon")}
+          interval={8000}
+          className="px-4 pb-24 pt-16 sm:px-6"
+        >
           <div className="mx-auto max-w-7xl">
             <EntryRow entry={headline} layout="spread" num="01" />
           </div>
-        </section>
+        </SlideshowSection>
       )}
+
     </>
   );
 }
