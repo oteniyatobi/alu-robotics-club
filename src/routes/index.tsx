@@ -9,10 +9,10 @@ export const Route = createFileRoute('/')({
 })
 
 const galleryPreview = [
-  '/ftc-rwanda/ftc-84.jpg',
-  '/ftc-rwanda/ftc-74.jpg',
-  '/hackathon-2025/hackathon-08.jpg',
-  '/ftc-rwanda/ftc-82.jpg',
+  '/images/ftc-rwanda/ftc-84.jpg',
+  '/images/ftc-rwanda/ftc-74.jpg',
+  '/images/hackathon-2025/hackathon-08.jpg',
+  '/images/ftc-rwanda/ftc-82.jpg',
 ]
 
 function Home() {
@@ -71,12 +71,12 @@ function Home() {
             <div className="hidden lg:block relative">
               <div className="overflow-hidden rounded-xl shadow-2xl">
                 <img
-                  src="/parc/hero.jpg"
+                  src="/images/parc/hero.jpg"
                   alt="Best Live Demonstration Award — PARC 2025"
                   className="w-full object-cover object-top"
                   style={{ maxHeight: '520px' }}
                   onError={(e) => {
-                    e.currentTarget.src = '/hackathon-2025/hackathon-08.jpg'
+                    e.currentTarget.src = '/images/hackathon-2025/hackathon-08.jpg'
                   }}
                 />
               </div>

@@ -4,41 +4,41 @@
  * To add a new hackathon / competition / project:
  *   1. Copy any entry object below.
  *   2. Change the fields (keep `slug` unique — it becomes the page URL).
- *   3. Photos go in public/ and are referenced as { src: '/parc/hero.jpg', caption: '...' }.
+ *   3. Photos go in public/ and are referenced as { src: '/images/parc/hero.jpg', caption: '...' }.
  */
 
 // Background slideshow photos for hero sections
 export const HERO_SLIDES = [
-  '/parc/hero.jpg',
-  '/hackathon-2025/hackathon-22.jpg',
-  '/ftc-rwanda/ftc-43.jpg',
-  '/ftc-rwanda/ftc-05.jpg',
-  '/ftc-rwanda/ftc-44.jpg',
-  '/hackathon-2025/hackathon-05.jpg',
-  '/ftc-rwanda/ftc-82.jpg',
-  '/ftc-rwanda/ftc-69.jpg',
-  '/hackathon-2025/hackathon-08.jpg',
-  '/ftc-rwanda/ftc-45.jpg',
-  '/hackathon-2025/hackathon-15.jpg',
-  '/ftc-rwanda/ftc-83.jpg',
+  '/images/parc/hero.jpg',
+  '/images/hackathon-2025/hackathon-22.jpg',
+  '/images/ftc-rwanda/ftc-43.jpg',
+  '/images/ftc-rwanda/ftc-05.jpg',
+  '/images/ftc-rwanda/ftc-44.jpg',
+  '/images/hackathon-2025/hackathon-05.jpg',
+  '/images/ftc-rwanda/ftc-82.jpg',
+  '/images/ftc-rwanda/ftc-69.jpg',
+  '/images/hackathon-2025/hackathon-08.jpg',
+  '/images/ftc-rwanda/ftc-45.jpg',
+  '/images/hackathon-2025/hackathon-15.jpg',
+  '/images/ftc-rwanda/ftc-83.jpg',
 ]
 
 // PARC competition photos
 const PARC_PHOTOS = [
   {
-    src: '/parc/hero.jpg',
+    src: '/images/parc/hero.jpg',
     caption: 'Best Live Demonstration Award at PARC 2025',
   },
   {
-    src: '/parc/stela-with-operator.jpg',
+    src: '/images/parc/stela-with-operator.jpg',
     caption: 'Operating our rover on the PARC competition floor at NBA Academy Africa, Dakar',
   },
   {
-    src: '/parc/stela-ready.jpg',
+    src: '/images/parc/stela-ready.jpg',
     caption: 'Team ready to compete at PARC 2025',
   },
   {
-    src: '/parc/stela-robot.jpg',
+    src: '/images/parc/stela-robot.jpg',
     caption: 'Our rover on the outdoor competition track at PARC 2025',
   },
 ]
@@ -70,7 +70,7 @@ const hackathonCaptions = [
 ]
 
 const HACKATHON_2025 = hackathonCaptions.map((caption, i) => ({
-  src: `/hackathon-2025/hackathon-${String(i + 1).padStart(2, '0')}.jpg`,
+  src: `/images/hackathon-2025/hackathon-${String(i + 1).padStart(2, '0')}.jpg`,
   caption,
 }))
 
@@ -165,7 +165,7 @@ const ftcCaptions = [
 ]
 
 const FTC_PHOTOS = ftcCaptions.map((caption, i) => ({
-  src: `/ftc-rwanda/ftc-${String(i + 1).padStart(2, '0')}.jpg`,
+  src: `/images/ftc-rwanda/ftc-${String(i + 1).padStart(2, '0')}.jpg`,
   caption,
 }))
 
