@@ -19,9 +19,9 @@ function Home() {
   return (
     <>
       {/* ── HERO — dark navy with crossfading photos ─────────── */}
-      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.75} className="px-6 sm:px-8 py-12 sm:py-20">
+      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.75} className="px-5 sm:px-8 py-10 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_400px]">
+          <div className="grid items-center gap-8 lg:gap-12 lg:grid-cols-[1fr_400px]">
 
             {/* Left — club identity */}
             <div>
@@ -53,7 +53,7 @@ function Home() {
                 ALU Robotics Club
               </h1>
 
-              <p className="text-white/75 text-lg leading-relaxed mb-8 max-w-sm">
+              <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-8 max-w-sm">
                 {CLUB.tagline}
               </p>
 

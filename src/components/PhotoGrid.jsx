@@ -66,7 +66,7 @@ export function PhotoGrid({ images, columns = 'grid-cols-2 sm:grid-cols-3 lg:gri
           role="dialog"
           aria-modal="true"
           aria-label="Photo viewer"
-          className="fixed inset-0 z-[100] flex flex-col p-4 sm:p-8"
+          className="fixed inset-0 z-[100] flex flex-col p-3 sm:p-8"
           style={{ backgroundColor: 'rgba(0,26,72,0.97)' }}
           onClick={() => setActive(null)}
         >
@@ -77,10 +77,10 @@ export function PhotoGrid({ images, columns = 'grid-cols-2 sm:grid-cols-3 lg:gri
             <button
               type="button"
               aria-label="Close"
-              className="shrink-0 rounded-full border border-white/20 p-2 text-white hover:border-white/60"
+              className="shrink-0 rounded-full border border-white/20 p-2 text-white hover:border-white/60 touch-manipulation"
               onClick={() => setActive(null)}
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5 sm:h-5 sm:w-5" />
             </button>
           </div>
           <div

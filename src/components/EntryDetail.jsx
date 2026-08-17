@@ -15,7 +15,7 @@ export function EntryDetail({ entry }) {
   return (
     <>
       {/* Page header — dark navy */}
-      <section style={{ backgroundColor: '#001a48' }} className="px-4 py-16 sm:px-6 sm:py-24">
+      <section style={{ backgroundColor: '#001a48' }} className="px-5 py-12 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-5xl">
           {/* Back link */}
           <Link
@@ -80,7 +80,7 @@ export function EntryDetail({ entry }) {
       )}
 
       {/* Write-up + sidebar */}
-      <section className="bg-white px-4 py-14 sm:px-6 sm:py-20">
+      <section className="bg-white px-5 py-10 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-12 lg:grid-cols-[1fr_260px]">
             {/* Write-up */}
@@ -135,7 +135,7 @@ export function EntryDetail({ entry }) {
       </section>
 
       {/* Photo gallery */}
-      <section className="bg-[#f1f5fb] px-4 py-14 sm:px-6 sm:py-20">
+      <section className="bg-[#f1f5fb] px-5 py-10 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl">
           <h2 className="mb-8 text-xl font-bold text-[#001a48]">
             Photos

@@ -8,13 +8,13 @@ export function AnnouncementPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-4"
       style={{ backgroundColor: 'rgba(0,22,58,0.88)' }}
       onClick={() => setOpen(false)}
     >
       <div
-        className="relative bg-white rounded-2xl w-full shadow-2xl flex overflow-hidden"
-        style={{ maxWidth: '960px' }}
+        className="relative bg-white w-full rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col sm:flex-row"
+        style={{ maxWidth: '900px', maxHeight: '92dvh' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -22,29 +22,35 @@ export function AnnouncementPopup() {
           type="button"
           aria-label="Close"
           onClick={() => setOpen(false)}
-          className="absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-[#001a48] shadow hover:bg-white"
+          className="absolute top-3 right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#001a48] shadow hover:bg-white"
         >
           <X className="h-4 w-4" />
         </button>
 
-        {/* Left — flyer image */}
+        {/* Mobile: short banner image at top */}
         <img
           src="/events/ieee-alu-session.jpg"
-          alt="Meet IEEE at ALU — Information Session"
-          className="shrink-0 rounded-l-2xl block"
-          style={{ width: '360px', height: 'auto' }}
+          alt="IEEE–ALU Information Session"
+          className="block sm:hidden w-full shrink-0"
+          style={{ height: '160px', objectFit: 'cover', objectPosition: 'top center' }}
         />
 
-        {/* Right — details */}
-        <div className="flex flex-col justify-between px-8 py-7 gap-5">
+        {/* Desktop: tall portrait image on the left */}
+        <img
+          src="/events/ieee-alu-session.jpg"
+          alt=""
+          aria-hidden="true"
+          className="hidden sm:block shrink-0"
+          style={{ width: '280px', height: 'auto' }}
+        />
+
+        {/* Details panel */}
+        <div className="flex flex-col justify-between px-5 sm:px-8 py-5 sm:py-7 gap-4 sm:gap-5 overflow-y-auto">
           <div>
-            <span
-              className="text-[10px] font-bold uppercase tracking-widest"
-              style={{ color: '#e4002b' }}
-            >
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#e4002b' }}>
               Upcoming Event
             </span>
-            <h2 className="text-2xl font-bold text-[#001a48] mt-1 leading-snug">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#001a48] mt-1 leading-snug">
               IEEE–ALU Information Session
             </h2>
           </div>
@@ -64,7 +70,7 @@ export function AnnouncementPopup() {
             </div>
           </div>
 
-          <p className="text-sm text-[#667085] leading-relaxed">
+          <p className="hidden sm:block text-sm text-[#667085] leading-relaxed">
             Calling all ALU students! Come learn about IEEE, technical societies, research
             opportunities, industry exposure, mentorship, and networking. Find out how
             you can get involved. Everyone is welcome.
@@ -72,7 +78,7 @@ export function AnnouncementPopup() {
 
           <div className="space-y-2 text-sm">
             <p className="font-semibold text-[#001a48]">What you'll learn about:</p>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-[#667085]">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-[#667085]">
               {[
                 'IEEE technical societies',
                 'Research & publications',
@@ -89,7 +95,7 @@ export function AnnouncementPopup() {
             </ul>
           </div>
 
-          <div className="flex items-center gap-4 pt-1">
+          <div className="flex items-center gap-4 pb-1">
             <a
               href="https://events.vtools.ieee.org/m/571630"
               target="_blank"

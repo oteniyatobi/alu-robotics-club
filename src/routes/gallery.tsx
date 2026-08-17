@@ -26,7 +26,7 @@ function Gallery() {
   return (
     <>
       {/* Header with slideshow — appropriate here since it's about the photos */}
-      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.72} className="px-6 py-20 sm:px-8 sm:py-28">
+      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.72} className="px-5 py-14 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-4">Gallery</p>
           <h1 className="text-4xl font-display text-white sm:text-5xl mb-3">Photo gallery</h1>

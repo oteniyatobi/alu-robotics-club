@@ -10,9 +10,9 @@ function About() {
   return (
     <>
       {/* Dark header */}
-      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.78} className="px-6 sm:px-8 py-20 sm:py-24">
+      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.78} className="px-5 sm:px-8 py-14 sm:py-24">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3">
+          <h1 className="text-white text-3xl sm:text-5xl font-bold mb-3">
             Built by students,<br className="hidden sm:block" /> for the continent.
           </h1>
           <p className="text-white/65 text-base max-w-md">
@@ -22,7 +22,7 @@ function About() {
       </SlideshowSection>
 
       {/* Mission */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">Mission</p>
           <p className="text-xl leading-relaxed text-[#001a48] max-w-xl font-medium">
@@ -35,7 +35,7 @@ function About() {
       <div className="border-t border-[#e4e7ec]" />
 
       {/* Our story */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">Our story</p>
           <div className="space-y-5 max-w-2xl">
@@ -65,7 +65,7 @@ function About() {
       <div className="border-t border-[#e4e7ec]" />
 
       {/* What we do */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">What we do</p>
           <div className="grid sm:grid-cols-2 gap-8">
@@ -107,7 +107,7 @@ function About() {
       <div className="border-t border-[#e4e7ec]" />
 
       {/* Numbers */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">By the numbers</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
@@ -129,7 +129,7 @@ function About() {
       <div className="border-t border-[#e4e7ec]" />
 
       {/* Join us */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">Join us</p>
           <div className="max-w-2xl">
@@ -165,7 +165,7 @@ function About() {
       <div className="border-t border-[#e4e7ec]" />
 
       {/* Contact */}
-      <section className="mx-auto max-w-7xl px-6 sm:px-8 py-16 sm:py-20">
+      <section className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid sm:grid-cols-[200px_1fr] gap-8 sm:gap-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] pt-1">Contact</p>
           <div>
