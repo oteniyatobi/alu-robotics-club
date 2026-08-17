@@ -29,7 +29,7 @@ export function AnnouncementPopup() {
 
         {/* Left — flyer image */}
         <img
-          src="/images/events/ieee-alu-session.jpg"
+          src="/events/ieee-alu-session.jpg"
           alt="Meet IEEE at ALU — Information Session"
           className="shrink-0 rounded-l-2xl block"
           style={{ width: '360px', height: 'auto' }}
