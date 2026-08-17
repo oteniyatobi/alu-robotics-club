@@ -1,197 +1,190 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { SlideshowSection } from "@/components/SlideshowSection";
-import { EntryRow } from "@/components/EntryRow";
-import { CLUB, latest, slideshowPhotos, entries, CATEGORY_LABELS } from "@/data/content";
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { ArrowRight } from 'lucide-react'
+import { CLUB, entries, HERO_SLIDES } from '@/data/content'
+import { SlideshowSection } from '@/components/SlideshowSection'
+import { EntryCard } from '@/components/EntryRow'
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "ALU Robotics Club | Builds, Hackathons & Competition Results" },
-      {
-        name: "description",
-        content:
-          "The ALU Robotics Club in Kigali builds autonomous machines and enters hackathons and robotics competitions. Photos, results and build write-ups.",
-      },
-      { property: "og:title", content: "ALU Robotics Club | Builds, Hackathons & Competitions" },
-      {
-        property: "og:description",
-        content:
-          "Project showcase from the African Leadership University robotics club: rovers, sensor meshes, competition results and build photos.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+export const Route = createFileRoute('/')({
   component: Home,
-});
+})
 
-const routeFor: Record<string, string> = {
-  hackathon: "/hackathons/$slug",
-  competition: "/competitions/$slug",
-  project: "/projects/$slug",
-};
+const galleryPreview = [
+  '/ftc-rwanda/ftc-84.jpg',
+  '/ftc-rwanda/ftc-74.jpg',
+  '/hackathon-2025/hackathon-08.jpg',
+  '/ftc-rwanda/ftc-82.jpg',
+]
 
 function Home() {
-  const heroPhotos = slideshowPhotos();
-  const headline = entries[0];
-  const preview = [latest("hackathon"), latest("competition"), latest("project")].filter(
-    (e): e is NonNullable<typeof e> => Boolean(e)
-  );
-  const contactSheet = entries.slice(0, 6).map((e) => e.images[1] ?? e.images[0]!);
-
   return (
     <>
-      {/* ── Masthead hero: asymmetric 8/4 split over a full-bleed slideshow ── */}
-      <SlideshowSection
-        photos={heroPhotos}
-        overlay="hero"
-        interval={5000}
-        className="px-4 py-20 sm:px-6 sm:py-28"
-      >
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-12">
-          <span
-            aria-hidden="true"
-            className="absolute left-[-2rem] top-0 hidden h-full w-px bg-primary/25 lg:block"
-          />
+      {/* ── HERO — dark navy with crossfading photos ─────────── */}
+      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.75} className="px-6 sm:px-8 py-12 sm:py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_400px]">
 
-          <div className="relative z-10 flex min-h-[34rem] flex-col justify-end lg:col-span-8 lg:pr-20">
-            <span className="kicker">
-              {CLUB.city} · Est. {CLUB.founded}
-            </span>
-            <h1 className="mt-8 text-6xl sm:text-8xl lg:text-9xl">
-              ALU
-              <br />
-              <span className="type-outline">Robotics</span>
-            </h1>
-            <p className="mt-8 max-w-md text-lg leading-relaxed">{CLUB.tagline}</p>
+            {/* Left — club identity */}
+            <div>
+              {/* Logo row — shows real logos when files exist, styled badge when not */}
+              <div className="mb-8 flex items-center gap-4">
+                <img
+                  src="/robotics-logo.png"
+                  alt="ALU Robotics Club logo"
+                  className="h-12 w-12 object-contain"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+                <div className="h-10 w-px bg-white/20" />
+                <img
+                  src="/alu-logo.png"
+                  alt="African Leadership University"
+                  className="h-10 object-contain"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              </div>
 
-            <div className="mt-10 flex flex-wrap items-stretch gap-8">
-              <Link to="/projects" className="btn-alu group">
-                See the <span className="btn-strong">builds</span>
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link to="/gallery" className="btn-alu-ghost group">
-                Photo <span className="btn-strong">wall</span>
-              </Link>
+              <p className="kicker mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                {CLUB.university} &nbsp;·&nbsp; {CLUB.city}
+              </p>
+
+              <h1
+                className="text-white mb-5"
+                style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
+              >
+                ALU Robotics Club
+              </h1>
+
+              <p className="text-white/75 text-lg leading-relaxed mb-8 max-w-sm">
+                {CLUB.tagline}
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Link to="/competitions" className="btn-primary">
+                  Our competitions
+                </Link>
+                <Link to="/gallery" className="btn-ghost-light">
+                  See photos
+                </Link>
+              </div>
             </div>
 
-          </div>
-
-          {/* Tall portrait plate with red bracket */}
-          <div className="relative mt-12 h-[26rem] lg:col-span-4 lg:mt-0 lg:h-auto">
-            <div className="bracket-bl absolute inset-0 overflow-hidden bg-navy">
-              <img
-                src={headline?.images[0]?.src}
-                alt={headline?.images[0]?.caption ?? "Club build"}
-                className="h-full w-full object-cover opacity-80 transition-all duration-700 hover:opacity-100"
-              />
+            {/* Right — PARC award photo */}
+            <div className="hidden lg:block relative">
+              <div className="overflow-hidden rounded-xl shadow-2xl">
+                <img
+                  src="/parc/hero.jpg"
+                  alt="Best Live Demonstration Award — PARC 2025"
+                  className="w-full object-cover object-top"
+                  style={{ maxHeight: '520px' }}
+                  onError={(e) => {
+                    e.currentTarget.src = '/hackathon-2025/hackathon-08.jpg'
+                  }}
+                />
+              </div>
+              {/* Achievement caption */}
+              <div
+                className="absolute bottom-0 left-0 right-0 rounded-b-xl px-4 py-3"
+                style={{ background: 'linear-gradient(to top, rgba(0,26,72,0.95) 60%, transparent)' }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-0.5">
+                  PARC 2025, Dakar, Senegal
+                </p>
+                <p className="text-sm font-semibold text-white">
+                  Best Live Demonstration Award + 2nd Place Overall
+                </p>
+              </div>
             </div>
-            <span
-              aria-hidden="true"
-              className="absolute top-12 -right-4 hidden h-px w-8 bg-primary lg:block"
-            />
+
           </div>
         </div>
       </SlideshowSection>
 
-      {/* Short statement band over a slideshow */}
-      <SlideshowSection
-        photos={slideshowPhotos("project")}
-        interval={6000}
-        className="border-y border-border px-4 py-16 sm:px-6 sm:py-20"
-      >
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
-          <p className="text-2xl leading-tight text-white sm:text-3xl lg:col-span-7">
-            We design, wire and code autonomous machines out of a lab in Kigali, rovers, sensor
-            meshes, arms and sumo bots, then put them in front of judges.
-          </p>
-          <div className="grid auto-rows-min grid-cols-3 gap-px self-start bg-border lg:col-span-5 lg:grid-cols-6">
-            {contactSheet.map((image, i) => (
-              <div key={i} className="aspect-square overflow-hidden rounded-lg bg-navy">
-                <img
-                  src={image.src}
-                  alt={image.caption}
-                  loading="lazy"
-                  className="h-full w-full object-cover opacity-70 transition-all duration-500 hover:opacity-100"
-                />
+      {/* ── STATS STRIP ────────────────────────────────────────── */}
+      <div className="border-b border-[#e4e7ec] bg-white">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="grid grid-cols-3 divide-x divide-[#e4e7ec]">
+            {[
+              { value: CLUB.founded, label: 'Founded' },
+              { value: '100+', label: 'Active members' },
+              { value: '2', label: 'PARC awards' },
+            ].map((s) => (
+              <div key={s.label} className="py-6 px-4 sm:px-8 first:pl-0 last:pr-0">
+                <p className="text-2xl font-bold text-[#001a48]">{s.value}</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#667085] mt-0.5">
+                  {s.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
-      </SlideshowSection>
+      </div>
 
-      {/* Preview strip over a slideshow */}
-      <SlideshowSection
-        photos={slideshowPhotos("competition")}
-        interval={7000}
-        className="px-4 py-20 sm:px-6 sm:py-24"
-      >
-
+      {/* ── LATEST WORK ────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-6 sm:px-8 bg-[#f5f7fb]">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <span className="kicker">Latest on the bench</span>
-              <h2 className="mt-6 text-4xl sm:text-5xl">Most recent<br />
-                <span className="type-outline">three entries</span>
-              </h2>
-            </div>
-            <Link
-              to="/gallery"
-              className="font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-primary hover:text-white"
-            >
-              Full photo wall →
-            </Link>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 border-t border-border md:grid-cols-3">
-            {preview.map((entry, i) => (
-              <Link
-                key={entry.slug}
-                to={routeFor[entry.category]!}
-                params={{ slug: entry.slug }}
-                className="group relative border-border p-0 pt-10 md:border-r md:p-10 md:last:border-r-0"
-              >
-                <div className="relative mb-8 aspect-[4/5] overflow-hidden rounded-2xl bg-navy">
-                  <img
-                    src={entry.images[0]?.src}
-                    alt={entry.images[0]?.caption ?? entry.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-primary-foreground">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <span className="label-mono text-primary">
-                  {CATEGORY_LABELS[entry.category]} · {entry.dateLabel}
-                </span>
-                <h3 className="mt-3 text-2xl transition-colors group-hover:text-primary">
-                  {entry.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed">{entry.shortDescription}</p>
-                <p className="mt-5 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-white">
-                  {entry.outcome}
-                </p>
-              </Link>
+          <h2 className="text-2xl font-bold text-[#001a48] mb-8">Latest work</h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {entries.map((entry) => (
+              <EntryCard key={entry.slug} entry={entry} />
             ))}
           </div>
         </div>
-      </SlideshowSection>
+      </section>
 
-      {/* Tall photo-dominant spread of the headline entry */}
-      {headline && (
-        <SlideshowSection
-          photos={slideshowPhotos("hackathon")}
-          interval={8000}
-          className="px-4 pb-24 pt-16 sm:px-6"
-        >
-          <div className="mx-auto max-w-7xl">
-            <EntryRow entry={headline} layout="spread" num="01" />
+      {/* ── PHOTOS TEASER ──────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-6 sm:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-2 gap-2">
+              {galleryPreview.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  className="w-full aspect-square object-cover rounded-sm"
+                />
+              ))}
+            </div>
+            <div>
+              <p className="kicker mb-4">From the field</p>
+              <h2 className="text-3xl font-bold text-[#001a48] mb-4">
+                Every competition.<br />Every hackathon.
+              </h2>
+              <p className="text-[#667085] leading-relaxed mb-6">
+                Unfiltered photos from our competitions and hackathons. Real builds, real teams,
+                real moments from Dakar to Kigali.
+              </p>
+              <Link to="/gallery" className="btn-primary inline-flex items-center gap-2">
+                View gallery <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
-        </SlideshowSection>
-      )}
+        </div>
+      </section>
 
+      {/* ── SOCIAL CTA ─────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-6 sm:px-8" style={{ backgroundColor: '#001a48' }}>
+        <div className="mx-auto max-w-7xl flex flex-wrap items-center justify-between gap-8">
+          <div>
+            <h2 className="text-white text-2xl font-bold mb-1">Follow the build</h2>
+            <p className="text-white/60 text-sm">
+              Competition updates, hackathon footage, and project logs.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {CLUB.socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost-light"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
-  );
+  )
 }

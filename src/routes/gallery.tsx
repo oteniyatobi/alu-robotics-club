@@ -1,78 +1,70 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { PhotoGrid } from "@/components/PhotoGrid";
-import { SlideshowSection } from "@/components/SlideshowSection";
-import { allImages, slideshowPhotos, CATEGORY_LABELS, type Category } from "@/data/content";
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import { PhotoGrid } from '@/components/PhotoGrid'
+import { SlideshowSection } from '@/components/SlideshowSection'
+import { allImages, CATEGORY_LABELS, HERO_SLIDES } from '@/data/content'
 
-export const Route = createFileRoute("/gallery")({
-  head: () => ({
-    meta: [
-      { title: "Photo Gallery | ALU Robotics Club" },
-      {
-        name: "description",
-        content:
-          "Every photo from every ALU Robotics Club hackathon, competition and project in one wall, filterable by category.",
-      },
-      { property: "og:title", content: "Photo Gallery | ALU Robotics Club" },
-      {
-        property: "og:description",
-        content: "The full photo wall: builds, arenas and late-night lab sessions in Kigali.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+export const Route = createFileRoute('/gallery')({
   component: Gallery,
-});
+})
 
-const filters: Array<{ key: Category | "all"; label: string }> = [
-  { key: "all", label: "All" },
-  { key: "hackathon", label: "Hackathons" },
-  { key: "competition", label: "Competitions" },
-  { key: "project", label: "Projects" },
-];
+const filters = [
+  { key: 'all', label: 'All' },
+  { key: 'hackathon', label: 'Hackathons' },
+  { key: 'competition', label: 'Competitions' },
+]
 
 function Gallery() {
-  const [filter, setFilter] = useState<Category | "all">("all");
+  const [filter, setFilter] = useState('all')
   const images = allImages()
-    .filter((i) => filter === "all" || i.entry.category === filter)
+    .filter((i) => filter === 'all' || i.entry.category === filter)
     .map((i) => ({
       src: i.src,
-      caption: `${i.entry.title} · ${CATEGORY_LABELS[i.entry.category]} · ${i.caption}`,
-    }));
+      caption: `${i.entry.title}, ${CATEGORY_LABELS[i.entry.category]}`,
+    }))
 
   return (
-    <SlideshowSection photos={slideshowPhotos()} interval={7000} className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-7xl">
-        <span className="kicker">{images.length} frames on file</span>
-        <h1 className="mt-7 text-5xl sm:text-7xl">
-          Photo
-          <br />
-          <span className="type-outline">wall</span>
-        </h1>
-        <p className="mt-6 max-w-md text-lg leading-relaxed">
-          Every frame across every hackathon, competition and build.
-        </p>
-
-
-        <div className="mt-8 flex flex-wrap gap-2">
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              type="button"
-              onClick={() => setFilter(f.key)}
-              aria-pressed={filter === f.key}
-              className={filter === f.key ? "btn-alu" : "btn-alu-ghost text-muted-foreground"}
-            >
-              {f.label}
-            </button>
-          ))}
+    <>
+      {/* Header with slideshow — appropriate here since it's about the photos */}
+      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.72} className="px-6 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-4">Gallery</p>
+          <h1 className="text-4xl font-display text-white sm:text-5xl mb-3">Photo gallery</h1>
+          <p className="text-sm text-white/60 max-w-sm">
+            Every moment across our hackathons and competitions.
+          </p>
+          {/* Filter buttons — minimal, not pill */}
+          <div className="mt-8 flex flex-wrap gap-2">
+            {filters.map((f) => (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => setFilter(f.key)}
+                aria-pressed={filter === f.key}
+                className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors"
+                style={
+                  filter === f.key
+                    ? { backgroundColor: '#e4002b', color: '#ffffff', borderRadius: '2px' }
+                    : { border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.65)', backgroundColor: 'transparent', borderRadius: '2px' }
+                }
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
         </div>
+      </SlideshowSection>
 
-        <div className="mt-8">
-          <PhotoGrid images={images} layout="masonry" />
+      {/* Gallery grid */}
+      <section className="bg-white px-6 py-14 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-7xl">
+          {images.length === 0 ? (
+            <p className="text-sm text-[#737373]">No photos yet for this category.</p>
+          ) : (
+            <PhotoGrid images={images} layout="masonry" />
+          )}
         </div>
-      </div>
-    </SlideshowSection>
-  );
+      </section>
+    </>
+  )
 }
