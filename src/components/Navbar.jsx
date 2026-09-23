@@ -57,13 +57,13 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Contact — right side, desktop */}
-        <a
-          href="mailto:aluroboticsclub@gmail.com"
+        {/* Register CTA — right side, desktop */}
+        <Link
+          to="/register"
           className="hidden lg:inline-flex btn-primary text-base py-2 px-4"
         >
-          Contact us
-        </a>
+          Register
+        </Link>
 
         {/* Mobile hamburger */}
         <button
@@ -91,12 +91,13 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
-            href="mailto:aluroboticsclub@gmail.com"
-            className="block px-6 py-4 text-base font-semibold text-[#e4002b]"
+          <Link
+            to="/register"
+            onClick={() => setOpen(false)}
+            className="block px-6 py-4 text-base font-bold text-[#e4002b]"
           >
-            aluroboticsclub@gmail.com
-          </a>
+            Register for guest speaker session
+          </Link>
         </nav>
       )}
     </header>

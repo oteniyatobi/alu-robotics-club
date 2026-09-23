@@ -73,7 +73,8 @@ function Home() {
                 <img
                   src="/parc/hero.jpg"
                   alt="Best Live Demonstration Award — PARC 2025"
-                  className="w-full object-cover object-center"
+                  className="w-full object-cover"
+                  style={{ objectPosition: 'center 20%' }}
                   style={{ maxHeight: '520px' }}
                   onError={(e) => {
                     e.currentTarget.src = '/hackathon-2025/hackathon-08.jpg'

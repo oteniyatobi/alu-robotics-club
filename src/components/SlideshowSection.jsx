@@ -31,7 +31,8 @@ export function SlideshowSection({
               <img
                 src={src}
                 alt=""
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover"
+                style={{ objectPosition: 'center 25%' }}
               />
             </div>
           ))}
