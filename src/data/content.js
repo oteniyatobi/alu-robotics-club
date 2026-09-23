@@ -57,6 +57,26 @@ export const REGISTER_SLIDES = [
   '/hackathon-2025/hackathon-18.jpg',
 ]
 
+// Competitions page slideshow — PARC and FTC focused
+export const COMPETITION_SLIDES = [
+  '/parc/stela-with-operator.jpg',
+  '/ftc-rwanda/ftc-42.jpg',
+  '/parc/stela-ready.jpg',
+  '/ftc-rwanda/ftc-61.jpg',
+  '/ftc-rwanda/ftc-30.jpg',
+  '/parc/stela-robot.jpg',
+]
+
+// Hackathons page slideshow — hackathon focused
+export const HACKATHON_SLIDES = [
+  '/hackathon-2025/hackathon-01.jpg',
+  '/hackathon-2025/hackathon-03.jpg',
+  '/hackathon-2025/hackathon-09.jpg',
+  '/hackathon-2025/hackathon-14.jpg',
+  '/hackathon-2025/hackathon-16.jpg',
+  '/hackathon-2025/hackathon-21.jpg',
+]
+
 // PARC competition photos
 const PARC_PHOTOS = [
   {

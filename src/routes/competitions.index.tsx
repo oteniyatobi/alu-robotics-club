@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CategoryIndex } from '@/components/CategoryIndex'
+import { COMPETITION_SLIDES } from '@/data/content'
 
 export const Route = createFileRoute('/competitions/')({
   component: () => (
@@ -7,6 +8,7 @@ export const Route = createFileRoute('/competitions/')({
       category="competition"
       heading="Competitions"
       blurb="Leagues and championships where our robots go head-to-head against other university teams."
+      slides={COMPETITION_SLIDES}
     />
   ),
 })

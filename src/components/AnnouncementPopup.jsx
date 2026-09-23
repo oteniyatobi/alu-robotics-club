@@ -30,7 +30,7 @@ export function AnnouncementPopup() {
         {/* Mobile: short banner image at top */}
         <img
           src="/events/ieee-alu-session.jpg"
-          alt="IEEE–ALU Information Session"
+          alt="IEEE ALU Information Session"
           className="block sm:hidden w-full shrink-0"
           style={{ height: '160px', objectFit: 'cover', objectPosition: 'top center' }}
         />
@@ -51,7 +51,7 @@ export function AnnouncementPopup() {
               Upcoming Event
             </span>
             <h2 className="text-xl sm:text-2xl font-bold text-[#001a48] mt-1 leading-snug">
-              IEEE–ALU Information Session
+              IEEE ALU Information Session
             </h2>
           </div>
 
@@ -62,11 +62,11 @@ export function AnnouncementPopup() {
             </div>
             <div className="flex items-center gap-2.5">
               <Clock className="h-4 w-4 shrink-0 text-[#667085]" />
-              <span className="font-medium">9:00 AM – 1:00 PM</span>
+              <span className="font-medium">9:00 AM to 1:00 PM</span>
             </div>
             <div className="flex items-center gap-2.5">
               <MapPin className="h-4 w-4 shrink-0 text-[#667085]" />
-              <span className="font-medium">Kenya–Burundi Room, ALU Kigali</span>
+              <span className="font-medium">Kenya Burundi Room, ALU Kigali</span>
             </div>
           </div>
 

@@ -42,7 +42,7 @@ export function RegisterBubble() {
             Happening soon
           </p>
           <p className="text-sm font-bold text-white leading-snug">
-            Guest speaker session — register now
+            Guest speaker session, register now
           </p>
         </div>
       </Link>
