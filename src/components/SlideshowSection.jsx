@@ -32,7 +32,7 @@ export function SlideshowSection({
                 src={src}
                 alt=""
                 className="h-full w-full object-cover"
-                style={{ objectPosition: 'center 25%' }}
+                style={{ objectPosition: 'center 15%' }}
               />
             </div>
           ))}

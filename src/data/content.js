@@ -7,7 +7,7 @@
  *   3. Photos go in public/ and are referenced as { src: '/images/parc/hero.jpg', caption: '...' }.
  */
 
-// Background slideshow photos for hero sections
+// Home page slideshow
 export const HERO_SLIDES = [
   '/parc/hero.jpg',
   '/hackathon-2025/hackathon-22.jpg',
@@ -21,6 +21,40 @@ export const HERO_SLIDES = [
   '/ftc-rwanda/ftc-45.jpg',
   '/hackathon-2025/hackathon-15.jpg',
   '/ftc-rwanda/ftc-83.jpg',
+]
+
+// About page slideshow — different images, team and people focused
+export const ABOUT_SLIDES = [
+  '/ftc-rwanda/ftc-11.jpg',
+  '/hackathon-2025/hackathon-02.jpg',
+  '/ftc-rwanda/ftc-29.jpg',
+  '/hackathon-2025/hackathon-10.jpg',
+  '/ftc-rwanda/ftc-50.jpg',
+  '/hackathon-2025/hackathon-20.jpg',
+  '/ftc-rwanda/ftc-66.jpg',
+  '/hackathon-2025/hackathon-17.jpg',
+]
+
+// Gallery page slideshow — another distinct set
+export const GALLERY_SLIDES = [
+  '/ftc-rwanda/ftc-21.jpg',
+  '/hackathon-2025/hackathon-04.jpg',
+  '/ftc-rwanda/ftc-37.jpg',
+  '/hackathon-2025/hackathon-13.jpg',
+  '/ftc-rwanda/ftc-55.jpg',
+  '/hackathon-2025/hackathon-07.jpg',
+  '/ftc-rwanda/ftc-74.jpg',
+  '/hackathon-2025/hackathon-19.jpg',
+]
+
+// Register page slideshow — workshop and build sessions
+export const REGISTER_SLIDES = [
+  '/ftc-rwanda/ftc-08.jpg',
+  '/hackathon-2025/hackathon-06.jpg',
+  '/ftc-rwanda/ftc-16.jpg',
+  '/hackathon-2025/hackathon-11.jpg',
+  '/ftc-rwanda/ftc-36.jpg',
+  '/hackathon-2025/hackathon-18.jpg',
 ]
 
 // PARC competition photos

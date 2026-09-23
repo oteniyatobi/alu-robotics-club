@@ -62,7 +62,7 @@ export function Navbar() {
           to="/register"
           className="hidden lg:inline-flex btn-primary text-base py-2 px-4"
         >
-          Register
+          Guest speaker session
         </Link>
 
         {/* Mobile hamburger */}

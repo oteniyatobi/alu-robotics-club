@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { PhotoGrid } from '@/components/PhotoGrid'
 import { SlideshowSection } from '@/components/SlideshowSection'
-import { allImages, HERO_SLIDES } from '@/data/content'
+import { allImages, GALLERY_SLIDES } from '@/data/content'
 
 export const Route = createFileRoute('/gallery')({
   component: Gallery,
@@ -60,7 +60,7 @@ function GallerySection({ categoryKey, label }) {
 function Gallery() {
   return (
     <>
-      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.72} className="px-5 py-14 sm:px-8 sm:py-28">
+      <SlideshowSection photos={GALLERY_SLIDES} overlayOpacity={0.72} className="px-5 py-14 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-4">Gallery</p>
           <h1 className="text-4xl font-bold text-white sm:text-5xl mb-3">Photo gallery</h1>

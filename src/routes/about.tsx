@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CLUB, HERO_SLIDES } from '@/data/content'
+import { CLUB, ABOUT_SLIDES } from '@/data/content'
 import { SlideshowSection } from '@/components/SlideshowSection'
 
 export const Route = createFileRoute('/about')({
@@ -10,7 +10,7 @@ function About() {
   return (
     <>
       {/* Dark header */}
-      <SlideshowSection photos={HERO_SLIDES} overlayOpacity={0.78} className="px-5 sm:px-8 py-14 sm:py-24">
+      <SlideshowSection photos={ABOUT_SLIDES} overlayOpacity={0.78} className="px-5 sm:px-8 py-14 sm:py-24">
         <div className="mx-auto max-w-7xl">
           <h1 className="text-white text-3xl sm:text-5xl font-bold mb-3">
             Built by students,<br className="hidden sm:block" /> for the continent.
