@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { X, User, Mail, Globe, Calendar, BookOpen } from 'lucide-react'
 
 // Paste your Google Apps Script deployment URL here after setup
-const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyT1c8YOZUbnkZNtd8gJDdp65JOTp0urankTKjuitUhgLK7RuGhZ3LwycAs2vfh4Q-GbQ/exec'
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
