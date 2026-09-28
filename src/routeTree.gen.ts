@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ZiplineRouteImport } from './routes/zipline'
 import { Route as CompetitionsIndexRouteImport } from './routes/competitions.index'
 import { Route as CompetitionsSlugRouteImport } from './routes/competitions.$slug'
 import { Route as HackathonsIndexRouteImport } from './routes/hackathons.index'
@@ -29,9 +32,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZiplineRoute = ZiplineRouteImport.update({
+  id: '/zipline',
+  path: '/zipline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompetitionsIndexRoute = CompetitionsIndexRouteImport.update({
@@ -68,7 +86,10 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/register': typeof RegisterRoute
+  '/zipline': typeof ZiplineRoute
   '/competitions/$slug': typeof CompetitionsSlugRoute
   '/hackathons/$slug': typeof HackathonsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -79,7 +100,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/register': typeof RegisterRoute
+  '/zipline': typeof ZiplineRoute
   '/competitions/$slug': typeof CompetitionsSlugRoute
   '/hackathons/$slug': typeof HackathonsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -91,7 +115,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/register': typeof RegisterRoute
+  '/zipline': typeof ZiplineRoute
   '/competitions/$slug': typeof CompetitionsSlugRoute
   '/hackathons/$slug': typeof HackathonsSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -104,7 +131,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/events'
     | '/gallery'
+    | '/register'
+    | '/zipline'
     | '/competitions/$slug'
     | '/hackathons/$slug'
     | '/projects/$slug'
@@ -115,7 +145,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/events'
     | '/gallery'
+    | '/register'
+    | '/zipline'
     | '/competitions/$slug'
     | '/hackathons/$slug'
     | '/projects/$slug'
@@ -126,7 +159,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/events'
     | '/gallery'
+    | '/register'
+    | '/zipline'
     | '/competitions/$slug'
     | '/hackathons/$slug'
     | '/projects/$slug'
@@ -138,7 +174,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
+  RegisterRoute: typeof RegisterRoute
+  ZiplineRoute: typeof ZiplineRoute
   CompetitionsSlugRoute: typeof CompetitionsSlugRoute
   HackathonsSlugRoute: typeof HackathonsSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -163,11 +202,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zipline': {
+      id: '/zipline'
+      path: '/zipline'
+      fullPath: '/zipline'
+      preLoaderRoute: typeof ZiplineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/competitions/': {
@@ -218,7 +278,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
+  RegisterRoute: RegisterRoute,
+  ZiplineRoute: ZiplineRoute,
   CompetitionsSlugRoute: CompetitionsSlugRoute,
   HackathonsSlugRoute: HackathonsSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
