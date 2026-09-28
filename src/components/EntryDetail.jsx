@@ -31,10 +31,10 @@ export function EntryDetail({ entry }) {
 
           {/* Category + date */}
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-[#e4002b] px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-white">
+            <span className="rounded-full bg-[#e4002b] px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider text-white">
               {CATEGORY_LABELS[entry.category]}
             </span>
-            <span className="text-[10px] font-mono uppercase tracking-widest" style={{ color: '#7fa0c8' }}>
+            <span className="text-xs font-mono uppercase tracking-widest" style={{ color: '#7fa0c8' }}>
               {entry.dateLabel}
             </span>
           </div>
@@ -102,13 +102,13 @@ export function EntryDetail({ entry }) {
             <aside className="space-y-8">
               {entry.tech && (
                 <div className="rounded-2xl border border-[#d4dff0] bg-[#f1f5fb] p-5">
-                  <p className="mb-3 text-[10px] font-mono font-semibold uppercase tracking-widest text-[#4a6080]">
+                  <p className="mb-3 text-xs font-mono font-semibold uppercase tracking-widest text-[#4a6080]">
                     Hardware / Stack
                   </p>
                   <ul className="space-y-2">
                     {entry.tech.map((t, i) => (
                       <li key={t} className="flex items-center gap-3 text-sm text-[#001a48]">
-                        <span className="text-[10px] font-mono font-bold text-[#e4002b]">
+                        <span className="text-xs font-mono font-bold text-[#e4002b]">
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         {t}
@@ -119,7 +119,7 @@ export function EntryDetail({ entry }) {
               )}
               {entry.team && (
                 <div className="rounded-2xl border border-[#d4dff0] bg-[#f1f5fb] p-5">
-                  <p className="mb-3 text-[10px] font-mono font-semibold uppercase tracking-widest text-[#4a6080]">
+                  <p className="mb-3 text-xs font-mono font-semibold uppercase tracking-widest text-[#4a6080]">
                     Team
                   </p>
                   <ul className="space-y-2">

@@ -2,8 +2,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Outlet, Link, createRootRouteWithContext } from '@tanstack/react-router'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { GuestSpeakerPopup } from '@/components/GuestSpeakerPopup'
 import { RegisterBubble } from '@/components/RegisterBubble'
+import { ZiplineBubble } from '@/components/ZiplineBubble'
 
 function NotFoundComponent() {
   return (
@@ -55,8 +55,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GuestSpeakerPopup />
       <RegisterBubble />
+      <ZiplineBubble />
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">
