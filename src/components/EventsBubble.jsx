@@ -13,7 +13,7 @@ const EVENTS = [
   {
     id: 'zipline',
     label: 'Zipline Rwanda Visit',
-    date: 'Date TBC',
+    date: 'Thu, 26 November 2026',
     location: 'Zipline Distribution Centre, Rwanda',
     href: '/zipline',
   },

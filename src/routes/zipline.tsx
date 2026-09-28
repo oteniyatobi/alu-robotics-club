@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import { User, Mail, Globe, BookOpen, MapPin } from 'lucide-react'
+import { User, Mail, Globe, BookOpen, MapPin, Calendar } from 'lucide-react'
 
 export const Route = createFileRoute('/zipline')({
   component: ZiplinePage,
@@ -66,6 +66,10 @@ function ZiplinePage() {
             Visit Zipline Rwanda
           </h1>
           <div className="flex flex-wrap gap-5 mt-4">
+            <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
+              <Calendar className="h-4 w-4" style={{ color: '#e4002b' }} />
+              Thursday, 26 November 2026
+            </div>
             <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
               <MapPin className="h-4 w-4" style={{ color: '#e4002b' }} />
               Zipline Distribution Centre, Rwanda
@@ -313,12 +317,16 @@ function ZiplinePage() {
                 <h3 className="text-sm font-bold text-[#001a48] mb-4 uppercase tracking-wide">Visit details</h3>
                 <div className="space-y-3 text-sm text-[#667085]">
                   <div className="flex gap-3">
+                    <Calendar className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#e4002b' }} />
+                    <span>Thursday, 26 November 2026</span>
+                  </div>
+                  <div className="flex gap-3">
                     <MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#e4002b' }} />
                     <span>Zipline Distribution Centre, Rwanda</span>
                   </div>
                 </div>
                 <p className="text-xs text-[#667085] mt-4 leading-relaxed">
-                  Date and time will be confirmed and shared with all registered attendees.
+                  Time will be shared with all registered attendees.
                 </p>
               </div>
 

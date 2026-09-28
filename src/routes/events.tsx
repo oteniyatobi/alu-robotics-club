@@ -20,7 +20,7 @@ const EVENTS = [
     id: 'zipline',
     label: 'Zipline Rwanda Visit',
     tag: 'Club Visit',
-    date: 'Date TBC',
+    date: 'Thursday, 26 November 2026',
     location: 'Zipline Distribution Centre, Rwanda',
     description:
       'A guided visit to Zipline Rwanda, the world\'s first national drone delivery network. See the technology up close and meet the engineers behind it.',
