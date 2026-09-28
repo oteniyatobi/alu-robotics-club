@@ -31,7 +31,7 @@ const EVENTS = [
       'A guided visit to Zipline Muhanga, the world\'s first national drone delivery network. See the technology up close and meet the engineers behind it. Transport and snacks provided.',
     href: '/zipline',
     scriptUrl: 'https://script.google.com/macros/s/AKfycbxOC3SoUC_J_sd1noeqUbFMbMyO-1IBCVF6vOEdeEzA9lIUOdlvHMczsggWnTwOU0_T/exec',
-    maxSlots: 40,
+    maxSlots: 25,
   },
 ]
 

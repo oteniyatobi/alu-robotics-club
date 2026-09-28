@@ -7,7 +7,8 @@ export const Route = createFileRoute('/zipline')({
 })
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOC3SoUC_J_sd1noeqUbFMbMyO-1IBCVF6vOEdeEzA9lIUOdlvHMczsggWnTwOU0_T/exec'
-const MAX_SLOTS = 40
+const MAX_SLOTS = 40       // actual form closes at this number
+const DISPLAY_SLOTS = 25  // number shown publicly
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
@@ -131,7 +132,7 @@ function ZiplinePage() {
             </div>
             <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
               <Users className="h-4 w-4" style={{ color: '#e4002b' }} />
-              Limited to {MAX_SLOTS} spots
+              Limited to {DISPLAY_SLOTS} spots
             </div>
           </div>
 
@@ -245,7 +246,7 @@ function ZiplinePage() {
               ) : (
                 <div className="flex flex-col gap-5">
                   {taken !== null && (
-                    <SlotsBanner taken={taken} max={MAX_SLOTS} />
+                    <SlotsBanner taken={Math.min(taken, DISPLAY_SLOTS)} max={DISPLAY_SLOTS} />
                   )}
 
                   {/* Application notice */}
@@ -259,7 +260,7 @@ function ZiplinePage() {
                     <div className="rounded-xl border border-[#fecdd3] bg-[#fff1f2] p-5 text-center">
                       <p className="text-sm font-bold text-[#e4002b] mb-1">Applications are closed</p>
                       <p className="text-xs text-[#667085]">
-                        All {MAX_SLOTS} spots have been filled. Email us to be added to the waitlist.
+                        All {DISPLAY_SLOTS} spots have been filled. Email us to be added to the waitlist.
                       </p>
                       <a href="mailto:aluroboticsclub@gmail.com" className="btn-primary text-sm mt-4 inline-block">
                         Join waitlist
@@ -379,8 +380,8 @@ function ZiplinePage() {
                     <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#e4002b' }} />
                     <span>
                       {taken !== null
-                        ? `${Math.max(0, MAX_SLOTS - taken)} of ${MAX_SLOTS} spots left`
-                        : `Limited to ${MAX_SLOTS} spots`}
+                        ? `${Math.max(0, DISPLAY_SLOTS - taken)} of ${DISPLAY_SLOTS} spots left`
+                        : `Limited to ${DISPLAY_SLOTS} spots`}
                     </span>
                   </div>
                 </div>
