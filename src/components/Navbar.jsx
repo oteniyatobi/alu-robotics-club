@@ -59,10 +59,10 @@ export function Navbar() {
 
         {/* Register CTA — right side, desktop */}
         <Link
-          to="/register"
+          to="/events"
           className="hidden lg:inline-flex btn-primary text-base py-2 px-4"
         >
-          Guest speaker session
+          Register for events
         </Link>
 
         {/* Mobile hamburger */}
@@ -92,11 +92,11 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            to="/register"
+            to="/events"
             onClick={() => setOpen(false)}
             className="block px-6 py-4 text-base font-bold text-[#e4002b]"
           >
-            Register for guest speaker session
+            Register for events
           </Link>
         </nav>
       )}
