@@ -7,7 +7,7 @@ export const Route = createFileRoute('/zipline')({
 })
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOC3SoUC_J_sd1noeqUbFMbMyO-1IBCVF6vOEdeEzA9lIUOdlvHMczsggWnTwOU0_T/exec'
-const MAX_SLOTS = 20
+const MAX_SLOTS = 40
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
