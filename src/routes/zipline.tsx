@@ -127,7 +127,7 @@ function ZiplinePage() {
             </div>
             <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
               <MapPin className="h-4 w-4" style={{ color: '#e4002b' }} />
-              Zipline Distribution Centre, Rwanda
+              Zipline Muhanga
             </div>
             <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
               <Users className="h-4 w-4" style={{ color: '#e4002b' }} />
@@ -373,7 +373,7 @@ function ZiplinePage() {
                   </div>
                   <div className="flex gap-3">
                     <MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#e4002b' }} />
-                    <span>Zipline Distribution Centre, Rwanda</span>
+                    <span>Zipline Muhanga</span>
                   </div>
                   <div className="flex gap-3">
                     <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#e4002b' }} />
