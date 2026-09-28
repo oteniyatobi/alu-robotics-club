@@ -7,7 +7,7 @@ export const Route = createFileRoute('/zipline')({
 })
 
 // Paste your Zipline Google Apps Script deployment URL here
-const SCRIPT_URL = 'YOUR_ZIPLINE_GOOGLE_APPS_SCRIPT_URL'
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOC3SoUC_J_sd1noeqUbFMbMyO-1IBCVF6vOEdeEzA9lIUOdlvHMczsggWnTwOU0_T/exec'
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
