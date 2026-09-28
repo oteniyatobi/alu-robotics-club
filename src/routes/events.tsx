@@ -10,8 +10,8 @@ const EVENTS = [
     id: 'guest-speaker',
     label: 'Guest Speaker Session',
     tag: 'Speaker Event',
-    date: 'Wednesday, 15 October 2026',
-    location: 'ALU Kigali Campus',
+    date: 'Wed, 15 Oct 2026, 4:00 PM, 6:00 PM',
+    location: 'Djibouti Classroom, ALU Kigali',
     description:
       'An in-person talk from an industry speaker on robotics, engineering, and technology. Open to all ALU students. Register to save your spot.',
     href: '/register',
@@ -20,7 +20,7 @@ const EVENTS = [
     id: 'zipline',
     label: 'Zipline Rwanda Visit',
     tag: 'Club Visit',
-    date: 'Thursday, 26 November 2026',
+    date: 'Thu, 26 Nov 2026, 12:00 PM, 5:00 PM',
     location: 'Zipline Distribution Centre, Rwanda',
     description:
       'A guided visit to Zipline Rwanda, the world\'s first national drone delivery network. See the technology up close and meet the engineers behind it.',
