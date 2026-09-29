@@ -28,10 +28,12 @@ const COUNTRIES = [
 const inputClass =
   'w-full rounded-xl border border-[#d0d5dd] bg-white px-4 py-3 text-sm text-[#001a48] placeholder-[#98a2b3] focus:outline-none focus:border-[#001a48] transition-colors'
 
-function SlotsBanner({ taken, max }) {
-  const remaining = Math.max(0, max - taken)
-  const pct = taken / max
-  const full = remaining === 0
+// taken: real count, displayMax: shown to public, realMax: actual close threshold
+function SlotsBanner({ taken, displayMax, realMax }) {
+  const inGrace = taken >= displayMax && taken < realMax
+  const displayTaken = Math.min(taken, displayMax)
+  const remaining = Math.max(0, displayMax - displayTaken)
+  const pct = displayTaken / displayMax
 
   let barColor = '#16a34a'
   let textColor = '#15803d'
@@ -40,7 +42,7 @@ function SlotsBanner({ taken, max }) {
   if (pct >= 0.5 && pct < 0.8) {
     barColor = '#d97706'; textColor = '#b45309'; bgColor = '#fffbeb'; borderColor = '#fde68a'
   }
-  if (pct >= 0.8) {
+  if (pct >= 0.8 || inGrace) {
     barColor = '#e4002b'; textColor = '#e4002b'; bgColor = '#fff1f2'; borderColor = '#fecdd3'
   }
 
@@ -50,22 +52,29 @@ function SlotsBanner({ taken, max }) {
         <div className="flex items-center gap-2">
           <Users className="h-4 w-4" style={{ color: textColor }} />
           <span className="text-sm font-bold" style={{ color: textColor }}>
-            {full ? 'No application slots remaining' : `${remaining} of ${max} application slots remaining`}
+            {inGrace
+              ? 'Spots are very limited'
+              : `${remaining} of ${displayMax} application slots remaining`}
           </span>
         </div>
-        {!full && (
+        {!inGrace && (
           <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: barColor, color: '#fff' }}>
             {Math.round(pct * 100)}% full
+          </span>
+        )}
+        {inGrace && (
+          <span className="text-xs font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: '#e4002b', color: '#fff' }}>
+            Limited
           </span>
         )}
       </div>
       <div className="h-2 rounded-full bg-white/60 overflow-hidden">
         <div className="h-full rounded-full transition-all duration-500"
-          style={{ width: `${Math.min(100, pct * 100)}%`, backgroundColor: barColor }} />
+          style={{ width: '100%', backgroundColor: barColor }} />
       </div>
-      {full && (
+      {inGrace && (
         <p className="text-xs mt-2 font-semibold" style={{ color: textColor }}>
-          Applications are closed. Contact us to be added to the waitlist.
+          Spots are limited. Submit your application as soon as possible.
         </p>
       )}
     </div>
@@ -251,7 +260,7 @@ function ZiplinePage() {
               ) : (
                 <div className="flex flex-col gap-5">
                   {taken !== null && (
-                    <SlotsBanner taken={Math.min(taken, DISPLAY_SLOTS)} max={DISPLAY_SLOTS} />
+                    <SlotsBanner taken={taken} displayMax={DISPLAY_SLOTS} realMax={MAX_SLOTS} />
                   )}
 
                   {/* Application notice */}
