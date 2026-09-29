@@ -12,6 +12,7 @@ export const Route = createFileRoute('/zipline')({
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOC3SoUC_J_sd1noeqUbFMbMyO-1IBCVF6vOEdeEzA9lIUOdlvHMczsggWnTwOU0_T/exec'
 const MAX_SLOTS = 40       // actual form closes at this number
 const DISPLAY_SLOTS = 25  // number shown publicly
+const CLOSED = true        // applications closed
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
@@ -93,7 +94,7 @@ function ZiplinePage() {
   }, [])
 
   const remaining = taken !== null ? Math.max(0, MAX_SLOTS - taken) : null
-  const isFull = remaining === 0
+  const isFull = CLOSED || remaining === 0
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
