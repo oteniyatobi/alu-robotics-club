@@ -11,7 +11,7 @@ export const Route = createFileRoute('/register')({
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyT1c8YOZUbnkZNtd8gJDdp65JOTp0urankTKjuitUhgLK7RuGhZ3LwycAs2vfh4Q-GbQ/exec'
 const MAX_SLOTS = 40
-const CLOSED = true  // set to false to reopen registration
+const CLOSED = false  // set to true to manually close registration
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
