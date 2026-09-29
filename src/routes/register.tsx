@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
-import { User, Mail, Globe, Calendar, BookOpen, MapPin, Clock, Users } from 'lucide-react'
+import { User, Mail, Globe, Calendar, BookOpen, MapPin, Clock, Users, Coffee } from 'lucide-react'
 import { fetchCount } from '@/utils/gasCount'
 
 const STORAGE_KEY = 'alu_registered_guest_speaker'
@@ -10,7 +10,7 @@ export const Route = createFileRoute('/register')({
 })
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyT1c8YOZUbnkZNtd8gJDdp65JOTp0urankTKjuitUhgLK7RuGhZ3LwycAs2vfh4Q-GbQ/exec'
-const MAX_SLOTS = 30
+const MAX_SLOTS = 40
 const CLOSED = true  // set to false to reopen registration
 
 const COUNTRIES = [
@@ -146,6 +146,13 @@ function RegisterPage() {
             <div className="flex items-center gap-2 text-sm" style={{ color: '#b8cce4' }}>
               <Users className="h-4 w-4" style={{ color: '#e4002b' }} />
               By registration only, {MAX_SLOTS} seats
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-5">
+            <div className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
+              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#ffffff' }}>
+              <Coffee className="h-3.5 w-3.5" style={{ color: '#e4002b' }} />
+              Snacks provided
             </div>
           </div>
         </div>
@@ -310,6 +317,10 @@ function RegisterPage() {
                         : `${MAX_SLOTS} seats total`}
                     </span>
                   </div>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-[#667085] mt-1">
+                  <Coffee className="h-4 w-4 shrink-0" style={{ color: '#e4002b' }} />
+                  Snacks provided
                 </div>
                 <div className="mt-4 rounded-lg bg-[#fff8f0] border border-[#fde68a] px-3 py-2">
                   <p className="text-xs font-semibold text-[#92400e]">
