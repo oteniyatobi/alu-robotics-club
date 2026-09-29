@@ -1,6 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { User, Mail, Globe, BookOpen, MapPin, Calendar, Clock, Users, Bus, Coffee } from 'lucide-react'
+import { fetchCount } from '@/utils/gasCount'
+
+const STORAGE_KEY = 'alu_registered_zipline'
 
 export const Route = createFileRoute('/zipline')({
   component: ZiplinePage,
@@ -77,10 +80,7 @@ function ZiplinePage() {
   const [taken, setTaken] = useState(null)
 
   useEffect(() => {
-    fetch(SCRIPT_URL)
-      .then((r) => r.json())
-      .then((d) => { if (typeof d.count === 'number') setTaken(d.count) })
-      .catch(() => {})
+    return fetchCount(SCRIPT_URL, setTaken)
   }, [])
 
   const remaining = taken !== null ? Math.max(0, MAX_SLOTS - taken) : null
@@ -91,6 +91,10 @@ function ZiplinePage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (isFull) return
+    try {
+      const prev = localStorage.getItem(STORAGE_KEY)
+      if (prev) { setStatus('duplicate'); return }
+    } catch {}
     setStatus('submitting')
     try {
       await fetch(SCRIPT_URL, {
@@ -99,6 +103,7 @@ function ZiplinePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, submittedAt: new Date().toISOString() }),
       })
+      try { localStorage.setItem(STORAGE_KEY, form.email) } catch {}
       setStatus('success')
       if (taken !== null) setTaken((t) => t + 1)
     } catch {
@@ -348,8 +353,13 @@ function ZiplinePage() {
                           Something went wrong. Please try again or contact us directly.
                         </p>
                       )}
+                      {status === 'duplicate' && (
+                        <p className="text-xs text-center font-semibold" style={{ color: '#b45309' }}>
+                          You have already submitted an application from this device.
+                        </p>
+                      )}
 
-                      <button type="submit" disabled={status === 'submitting'}
+                      <button type="submit" disabled={status === 'submitting' || status === 'duplicate'}
                         className="btn-primary w-full justify-center mt-1">
                         {status === 'submitting' ? 'Submitting...' : 'Submit application'}
                       </button>

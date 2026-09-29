@@ -1,6 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { User, Mail, Globe, Calendar, BookOpen, MapPin, Clock, Users } from 'lucide-react'
+import { fetchCount } from '@/utils/gasCount'
+
+const STORAGE_KEY = 'alu_registered_guest_speaker'
 
 export const Route = createFileRoute('/register')({
   component: RegisterPage,
@@ -84,10 +87,7 @@ function RegisterPage() {
   const [taken, setTaken] = useState(null)
 
   useEffect(() => {
-    fetch(SCRIPT_URL)
-      .then((r) => r.json())
-      .then((d) => { if (typeof d.count === 'number') setTaken(d.count) })
-      .catch(() => {})
+    return fetchCount(SCRIPT_URL, setTaken)
   }, [])
 
   const remaining = taken !== null ? Math.max(0, MAX_SLOTS - taken) : null
@@ -98,6 +98,10 @@ function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (isFull) return
+    try {
+      const prev = localStorage.getItem(STORAGE_KEY)
+      if (prev) { setStatus('duplicate'); return }
+    } catch {}
     setStatus('submitting')
     try {
       await fetch(SCRIPT_URL, {
@@ -106,6 +110,7 @@ function RegisterPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, submittedAt: new Date().toISOString() }),
       })
+      try { localStorage.setItem(STORAGE_KEY, form.email) } catch {}
       setStatus('success')
       if (taken !== null) setTaken((t) => t + 1)
     } catch {
@@ -263,8 +268,13 @@ function RegisterPage() {
                           Something went wrong. Please try again or email us directly.
                         </p>
                       )}
+                      {status === 'duplicate' && (
+                        <p className="text-xs text-center font-semibold" style={{ color: '#b45309' }}>
+                          You have already registered from this device.
+                        </p>
+                      )}
 
-                      <button type="submit" disabled={status === 'submitting'}
+                      <button type="submit" disabled={status === 'submitting' || status === 'duplicate'}
                         className="btn-primary w-full justify-center mt-1">
                         {status === 'submitting' ? 'Submitting...' : 'Register for the session'}
                       </button>
