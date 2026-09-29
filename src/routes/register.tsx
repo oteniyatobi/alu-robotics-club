@@ -11,6 +11,7 @@ export const Route = createFileRoute('/register')({
 
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyT1c8YOZUbnkZNtd8gJDdp65JOTp0urankTKjuitUhgLK7RuGhZ3LwycAs2vfh4Q-GbQ/exec'
 const MAX_SLOTS = 30
+const CLOSED = true  // set to false to reopen registration
 
 const COUNTRIES = [
   'Nigeria', 'Rwanda', 'Kenya', 'Ghana', 'Tanzania', 'Uganda', 'Ethiopia',
@@ -72,7 +73,7 @@ function SlotsBanner({ taken, max }) {
       </div>
       {full && (
         <p className="text-xs mt-2 font-semibold" style={{ color: textColor }}>
-          All spots are taken. Contact us to be added to the waitlist.
+          Registration for this event is now closed.
         </p>
       )}
     </div>
@@ -91,7 +92,7 @@ function RegisterPage() {
   }, [])
 
   const remaining = taken !== null ? Math.max(0, MAX_SLOTS - taken) : null
-  const isFull = remaining === 0
+  const isFull = CLOSED || remaining === 0
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
@@ -180,10 +181,10 @@ function RegisterPage() {
                     <div className="rounded-xl border border-[#fecdd3] bg-[#fff1f2] p-5 text-center">
                       <p className="text-sm font-bold text-[#e4002b] mb-1">This event is fully booked</p>
                       <p className="text-xs text-[#667085]">
-                        All {MAX_SLOTS} spots have been taken. Email us to join the waitlist.
+                        Registration is closed. Contact us if you have any questions.
                       </p>
                       <a href="mailto:aluroboticsclub@gmail.com" className="btn-primary text-sm mt-4 inline-block">
-                        Join waitlist
+                        Contact us
                       </a>
                     </div>
                   ) : (

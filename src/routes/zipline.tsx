@@ -274,10 +274,10 @@ function ZiplinePage() {
                     <div className="rounded-xl border border-[#fecdd3] bg-[#fff1f2] p-5 text-center">
                       <p className="text-sm font-bold text-[#e4002b] mb-1">Applications are closed</p>
                       <p className="text-xs text-[#667085]">
-                        All {DISPLAY_SLOTS} spots have been filled. Email us to be added to the waitlist.
+                        Applications are closed. Contact us if you have any questions.
                       </p>
                       <a href="mailto:aluroboticsclub@gmail.com" className="btn-primary text-sm mt-4 inline-block">
-                        Join waitlist
+                        Contact us
                       </a>
                     </div>
                   ) : (
