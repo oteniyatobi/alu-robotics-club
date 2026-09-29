@@ -24,6 +24,7 @@ const EVENTS = [
     id: 'zipline',
     label: 'Zipline Rwanda Visit',
     tag: 'Club Visit',
+    closed: true,
     date: 'Thu, 26 Nov 2026',
     time: '12:00 PM, 5:00 PM',
     location: 'Zipline Muhanga',
@@ -97,7 +98,7 @@ function EventsPage() {
             {EVENTS.map((ev) => {
               const taken = counts[ev.id] ?? null
               const remaining = taken !== null ? Math.max(0, ev.maxSlots - taken) : null
-              const isFull = remaining === 0
+              const isFull = ev.closed || remaining === 0
 
               return (
                 <Link
